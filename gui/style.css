@@ -10,7 +10,7 @@ body {
   background-color: #f0f0f0;
 }
 nav {
-  z-index: 100;
+  z-index: 10;
   display: flex;
   justify-content: space-around;
   height: 10vh;
@@ -376,6 +376,7 @@ main {
   opacity: 0;
   pointer-events: none;
   transition: 0.5s ease-out;
+  z-index: 100;
 }
 .fullscreenMode i, .makePostContainer i {
   position: fixed;
