@@ -2,8 +2,8 @@
 <div class="container sign-up-mode">
   <div class="forms-container">
     <div class="signin-signup">
-      <form id="editProfileForm" method="post" class="sign-up-form">
-        <div class="singu_part" id="first_signup">
+      <form id="editProfileForm" method="post" class="sign-up-form" style="margin-top:5vh;">
+        <div class="singu_part" id="first_signup" >
           <h2 class="title">Edit account</h2>
           <div style=" width:70%;">
             <label for="fname" >First Name</label>

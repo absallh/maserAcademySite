@@ -4,7 +4,7 @@
   $model = new admin();
 ?>
 <main>
-  <div class="share_continar">
+  <div class="share_continar" style="padding-top:2vh;">
     <div class="share">
       <div class="share_upSide">
         <img src="../image/soccer.svg" alt="profile" />
