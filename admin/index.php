@@ -51,5 +51,6 @@
 </main>
 <script src="../gui/admin.js"></script>
 <?php
+  require "../gui/profile.js.php";
   include "../gui/footer.html";
 ?>

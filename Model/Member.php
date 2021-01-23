@@ -6,6 +6,10 @@ class Member extends person
     private $payed;
     private $player_number;
 
+    public function __construct()
+    {
+        include_once "member_session.php";
+    }
     private function isPayed(string $member)
     {
         return;
@@ -19,6 +23,11 @@ class Member extends person
     private function seeAPost(int $post_id, string $member)
     {
         return;
+    }
+
+    public function getTshirtNumber(){
+      $db = New database();
+      return $db->getTshirtNumber($_SESSION['email']);
     }
 
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){

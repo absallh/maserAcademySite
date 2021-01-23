@@ -49,6 +49,8 @@ class person
           $_SESSION['permission'] = $personData['permission'];
           $_SESSION['firstName'] = $personData['firstName'];
           $_SESSION['lastName'] = $personData['lastName'];
+          $_SESSION['birthday'] = $personData['age'];
+          $_SESSION['phone'] = $personData['phone'];
           $_SESSION['lastTimeStamp'] = date('Y-m-d H:i:s');
           echo '<script>location.reload();</script>';//reload the page
           exit();

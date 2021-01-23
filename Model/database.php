@@ -42,9 +42,20 @@
       return $this->makeOneRowQuery($sql);
     }
 
+    public function getTshirtNumber($email)
+    {
+      $sql = "SELECT theNumber FROM playernumber JOIN payed ON payed.person = playernumber.player
+            AND player = '$email' AND payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY);";
+      $result = $this->makeOneRowQuery($sql);
+      if ($result == -1){
+        return -1;
+      }else {
+        return $result['theNumber'];
+      }
+    }
+
     public function updateLastActiveTime ($email){
-      $now = date('Y-m-d H:i:s');
-      $sql = "UPDATE person SET lastActive= '$now' WHERE mail = '$email';";
+      $sql = "UPDATE person SET lastActive= CURRENT_TIMESTAMP() WHERE mail = '$email';";
       $this->insertData($sql);
     }
 
@@ -55,10 +66,9 @@
     }
 
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){
-      $now = date('Y-m-d H:i:s');
       $sql = "INSERT INTO person(mail, firstName, lastName, lastActive,
           permission, person_password, age, phone) VALUES ('$email', '$firstName', '$lastName',
-         '$now', 2, '$password', '$birthday', '$phone');";
+         CURRENT_TIMESTAMP(), 2, '$password', '$birthday', '$phone');";
       if($this->insertData($sql)){
         return true;
       }else {
