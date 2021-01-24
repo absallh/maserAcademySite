@@ -1,0 +1,62 @@
+<link href="../gui/contact.css" rel="stylesheet">
+  <div class="contact-container">
+    <span class="big-circle"></span> <img alt="" class="square" src="../image/shape.png">
+    <div class="form">
+      <div class="contact-info">
+        <h3 class="contact-title">Tell your coach the problem</h3>
+        <p class="text">
+          Don't be shy to ask your coach about anything.
+          send him a massage and he will help you immediately.
+        </p>
+        <div class="info">
+          <div class="information">
+            <i class="fas fa-map-marked-alt icon"></i>
+            <p>92 Cherry Drive Uniondale, NY 11553</p>
+          </div>
+          <div class="information">
+            <i class="far fa-envelope icon"></i>
+            <p>lorem@ipsum.com</p>
+          </div>
+          <div class="information">
+            <i class="fas fa-phone-alt icon"></i>
+            <p>123-456-789</p>
+          </div>
+        </div>
+        <div class="social-media">
+          <p>Join our groups :</p>
+          <div class="contact-social-icons">
+            <a href="https://www.facebook.com/groups/2833559340002764/"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <span class="circle one"></span> <span class="circle two"></span>
+        <form action="index.html" autocomplete="off">
+          <h3 class="contact-title">Contact the coach</h3>
+          <div class="input-container textarea">
+            <textarea class="contact-input" name="message"></textarea> <label for="">Message</label> <span>Message</span>
+          </div><input class="contact-btn" type="submit" value="Send">
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const input = document.querySelector(".contact-input");
+
+    function focusFunc() {
+      let parent = this.parentNode;
+      parent.classList.add("focus");
+    }
+
+    function blurFunc() {
+      let parent = this.parentNode;
+      if (this.value == "") {
+        parent.classList.remove("focus");
+      }
+    }
+
+    input.addEventListener("focus", focusFunc);
+    input.addEventListener("blur", blurFunc);
+
+  </script>

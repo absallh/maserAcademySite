@@ -19,7 +19,7 @@ if(isset($_GET['call_type']))
 			'title'=>'contact',
 			'description' => 'contact the trainer',
 			'url' => $call_type,
-			'data'=>'<h1>contact page</h1>'
+			'data'=>file_get_contents('../gui/contact.html')
 		));
 	}
 }

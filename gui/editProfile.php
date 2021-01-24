@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../style.css">
 <div class="container sign-up-mode">
   <div class="forms-container">
-    <div class="signin-signup">
+    <div class="signin-signup" style="transition: none;">
       <form id="editProfileForm" method="post" class="sign-up-form" style="margin-top:5vh;">
         <div class="singu_part" id="first_signup" >
           <h2 class="title">Edit account</h2>
@@ -61,8 +61,8 @@
   <div class="panels-container">
     <div class="panel left-panel"></div>
     <div class="panel right-panel">
-      <div class="content" style="display:block; width:70vh;">
-        <h3 id="shirtH3">your T-shirt number: <strong id="tnumber">10</strong></h3>
+      <div class="content" style="display:block; width:40vw;">
+        <h3 id="shirtH3">your shirt number: <strong id="tnumber">10</strong></h3>
         <p>
           your email is "<strong id="email"></strong>"
         </p>

@@ -252,7 +252,7 @@ main {
   padding: 10px 0;
   font-size: 1.5rem;
   resize: none;
-  height: 40vh;
+  height: 20vh;
 }
 .input-field input::placeholder, .makePostinput textarea::placeholder {
   color: #aaa;

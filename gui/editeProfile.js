@@ -24,7 +24,9 @@ function showBirthDayText(){
     birthday.type = 'text';
   }
 }
+
 $(document).ready(function(){
+
   $('#password').keydown(function(){
     $("#repassword").show(1000);
   });
