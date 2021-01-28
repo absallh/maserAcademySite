@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+const oldpass = document.getElementById("oldpassword");
 const password = document.getElementById("password");
 const confirm_password = document.getElementById("confirm_password");
 const fname = document.getElementById("fname");
@@ -18,25 +19,24 @@ function validatePassword() {
     return true;
   }
 }
-//birthday const difend in app.js
-function showBirthDayText(){
-  if (!birthday.value){//if the birthday field is empty
-    birthday.type = 'text';
-  }
-}
 
 $(document).ready(function(){
-
   $('#password').keydown(function(){
     $("#repassword").show(1000);
   });
-
   $('#next_btn').click(function(){
-    if((fname.reportValidity()) && (lname.reportValidity()) &&
-    (password.reportValidity()) && (confirm_password.reportValidity()) && validatePassword()){
-      $('#first_signup').hide(1000);
-      $('#second_signup').show(1000);
-    }
+
+    var passTXT = oldpass.value;
+    var page_url = window.location.href;
+    page_url = page_url.replace(page_url.split("/").pop(), '');
+    $.getJSON(page_url+'urlHandler.php', {call_type: "editProfile", password: passTXT}, function(data, textStatus, xhr){
+      console.log(data);
+      oldpass.setCustomValidity(data.data);
+      if((fname.reportValidity()) && (lname.reportValidity()) && (oldpass.reportValidity())) {
+        $('#first_signup').hide(1000);
+        $('#second_signup').show(1000);
+      }
+    });
   });
 
   $('#prev_btn').click(function(){

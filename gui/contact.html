@@ -1,12 +1,13 @@
 <link href="../gui/contact.css" rel="stylesheet">
   <div class="contact-container">
-    <span class="big-circle"></span> <img alt="" class="square" src="../image/shape.png">
+    <span class="big-circle"></span>
+    <img alt="" class="square" src="../image/shape.png">
     <div class="form">
       <div class="contact-info">
         <h3 class="contact-title">Tell your coach the problem</h3>
         <p class="text">
           Don't be shy to ask your coach about anything.
-          send him a massage and he will help you immediately.
+          send him a massage and he will help you as soon as possible.
         </p>
         <div class="info">
           <div class="information">
@@ -30,19 +31,29 @@
           </div>
         </div>
       </div>
-      <div class="contact-form">
+      <div class="contact-form" >
         <span class="circle one"></span> <span class="circle two"></span>
-        <form action="index.html" autocomplete="off">
-          <h3 class="contact-title">Contact the coach</h3>
-          <div class="input-container textarea">
-            <textarea class="contact-input" name="message"></textarea> <label for="">Message</label> <span>Message</span>
-          </div><input class="contact-btn" type="submit" value="Send">
-        </form>
+        <div id="contact_div_form">
+          <form action="./contact" method="get" autocomplete="off">
+            <h3 class="contact-title">Contact the coach</h3>
+            <div class="input-container textarea">
+              <textarea class="contact-input" name="message"></textarea>
+              <label for="">Message</label><span>Message</span>
+            </div>
+            <input class="contact-btn" type="submit" value="Send">
+          </form>
+        </div>
+        <div id="thanks_for_contact" style="display: none;">
+          <form>
+            <h3 class="contact-title">Thanks for contacting us</h3>
+            <input class="contact-btn" type="button" value="Home" onclick="window.location.href = './';">
+          </form>
+        </div>
       </div>
     </div>
   </div>
   <script type="text/javascript">
-    const input = document.querySelector(".contact-input");
+    const contact_input = document.querySelector(".contact-input");
 
     function focusFunc() {
       let parent = this.parentNode;
@@ -56,7 +67,13 @@
       }
     }
 
-    input.addEventListener("focus", focusFunc);
-    input.addEventListener("blur", blurFunc);
+    contact_input.addEventListener("focus", focusFunc);
+    contact_input.addEventListener("blur", blurFunc);
 
+    const contact_div_form = document.querySelector("#contact_div_form");
+    const thanks_for_contact = document.querySelector("#thanks_for_contact");
+    function thank_to_the_user (){
+      contact_div_form.style.display = "none";
+      thanks_for_contact.style.display = "block";
+    }
   </script>

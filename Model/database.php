@@ -62,7 +62,20 @@
     public function login($userName, $password){
       $sql = "SELECT permission FROM person WHERE mail = '$userName' AND person_password = '$password';";
       $result = $this->makeOneRowQuery($sql);
+      if ($result == -1) {
+        return $result;
+      }
       return $result['permission'];
+    }
+
+    public function updateInfo ($email, $password, $firstName, $lastName, $age, $phone){
+      $sql = "UPDATE person SET firstName='$firstName', lastName='$lastName',
+          age= '$age', phone='$phone', person_password='$password' WHERE mail = '$email';";
+      if($this->insertData($sql)){
+        return true;
+      }else {
+        return false;
+      }
     }
 
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){

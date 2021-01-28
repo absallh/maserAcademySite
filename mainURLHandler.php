@@ -9,8 +9,8 @@ if(isset($_GET['call_type']))
 			'status'=>'success',
 			'title'=>'Edit Profile',
 			'description' => 'Edit user profile',
-			'url' => ''.$call_type.'',
-			'data'=>file_get_contents('../gui/editProfile.php')
+			'url' => $call_type,
+			'data'=>file_get_contents('../gui/editProfile.html')
 		));
 	}
 	elseif ($call_type == "contact") {
@@ -20,6 +20,19 @@ if(isset($_GET['call_type']))
 			'description' => 'contact the trainer',
 			'url' => $call_type,
 			'data'=>file_get_contents('../gui/contact.html')
+		));
+	}
+	elseif ($call_type == "editProfile") {
+		include "../Model/person.php";
+		$model = new person();
+		$validate = $model->validatePassword($_SESSION['email'] ,$_GET['password']);
+
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edite Profile',
+			'description' => 'Edit user profile',
+			'url' => $call_type,
+			'data'=>$validate
 		));
 	}
 }

@@ -7,6 +7,9 @@ class admin extends person
     public function __construct()
     {
         include_once "admin_session.php";
+        $db = New database();
+        $db->updateLastActiveTime($_SESSION['email']);
+        $_SESSION['lastTimeStamp'] = date('Y-m-d H:i:s');
     }
 
     private function publishAPost($content_txt, $time, $media)

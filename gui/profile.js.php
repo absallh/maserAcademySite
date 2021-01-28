@@ -27,7 +27,8 @@ $(document).ready(function($){
     setEditFormValues();
   }
   $('#NavprofileSpan').html('<?php echo $_SESSION['firstName'];?>');
-  var page_url = '<?php echo $app_url?>/';
+  var page_url = window.location.href;
+  page_url = page_url.replace(page_url.split("/").pop(), '');
 
   window.onpopstate = function(){
     var pageName = window.location.pathname.split("/").pop();
@@ -42,7 +43,6 @@ $(document).ready(function($){
   				$(document).find('meta[name=description]').attr('content', data.description);
           $('main').html(data.data);
           window.scrollTo({top: 0, behavior: 'smooth'});
-          $('#editProfileForm').attr('action', page_url+data.url);
           setEditFormValues();
   			});
     }else if (pageName == 'contact') {
@@ -71,7 +71,6 @@ $(document).ready(function($){
           $('main').html(data.data);
   				window.history.pushState("", "", page_url+data.url);
           window.scrollTo({top: 0, behavior: 'smooth'});
-          $('#editProfileForm').attr('action', page_url+data.url);
           setEditFormValues();
   			});
     }

@@ -9,6 +9,9 @@ class Member extends person
     public function __construct()
     {
         include_once "member_session.php";
+        $db = New database();
+        $db->updateLastActiveTime($_SESSION['email']);
+        $_SESSION['lastTimeStamp'] = date('Y-m-d H:i:s');
     }
     private function isPayed(string $member)
     {

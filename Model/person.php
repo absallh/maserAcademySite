@@ -57,6 +57,18 @@ class person
         }
     }
 
+    public function validatePassword($email, $password)
+    {
+      $password = filter_var($password, FILTER_SANITIZE_STRING);
+      $db = New database();
+      $permission = $db->login($email, $password);
+      if ($permission == -1){
+        return 'worng password';
+      }else{
+        return '';
+      }
+    }
+
     public function enterTheSystem($permission)
     {
       if ($permission == 1){
@@ -81,9 +93,23 @@ class person
         return;
     }
 
-    protected function updateInfo(string $password, string $firstName, string $lastName, int $age, string $phone): void
+    public function updateInfo($password, $firstName, $lastName, $age, $phone)
     {
-        return;
+        $password = filter_var($password, FILTER_SANITIZE_STRING);
+        $firstName = filter_var($firstName, FILTER_SANITIZE_STRING);
+        $lastName = filter_var($lastName, FILTER_SANITIZE_STRING);
+        $phone = filter_var($phone, FILTER_SANITIZE_STRING);
+
+        $db = New database();
+        if($db->updateInfo($_SESSION['email'], $password, $firstName, $lastName, $age, $phone)){
+          $_SESSION['firstName'] = $firstName;
+          $_SESSION['lastName'] = $lastName;
+          $_SESSION['birthday'] = $age;
+          $_SESSION['phone'] = $phone;
+          return true;
+        }else {
+          return false;
+        }
     }
 
 }
