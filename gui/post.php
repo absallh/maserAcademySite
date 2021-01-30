@@ -3,15 +3,13 @@
   <div class="news_feed_title">
     <img src="../image/soccer.svg" alt="user" />
     <div class="news_feed_title_content">
-      <p>Maser Academy</p>
-      <span>12h . <i class="fas fa-globe-americas"></i></span>
+      <p><?php echo $postPublisher; ?></p>
+      <span><?php echo date("d-m-Y g:i A", $postTime); ?> <i class="fas fa-globe-americas"></i></span>
     </div>
   </div>
   <div class="news_feed_description">
     <p class="news_feed_subtitle">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-      esse cum id vero odit tempora dicta. Saepe corporis voluptatibus
-      laboriosam?
+      <?php echo $postTxt; ?>
     </p>
     <div class="gallery">
       <div class="img-container">
@@ -31,7 +29,7 @@
   <div class="likes_area">
     <div></div>
     <div class="comment_counts">
-      <span>4 Comments</span>
+      <span><?php echo $commentCount; ?> Comments</span>
     </div>
   </div>
 

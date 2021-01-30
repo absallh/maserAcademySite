@@ -4,15 +4,10 @@
   $model = new admin();
 ?>
 <main>
-  <?php include "../gui/makePost.html"; ?>
-  <div class="content">
-    <div class="content_center">
-        <?php
-          include "../gui/post.php";
-          include "../gui/post.php";
-         ?>
-     </div>
-   </div>
+  <?php
+    include "../gui/makePost.html";
+    include "../gui/showHomePosts.php";
+  ?>
 </main>
 <script src="../gui/admin.js"></script>
 <?php

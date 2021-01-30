@@ -4,16 +4,12 @@ include "../gui/navbar.html";
 $model = new member();
 ?>
 <main>
-  <div class="content">
-    <div class="content_center">
-        <?php
-        include "../gui/post.php";
-        include "../gui/post.php";
-         ?>
-     </div>
-   </div>
+  <?php
+    include "../gui/showHomePosts.php";
+  ?>
 </main>
+<script src="../gui/admin.js"></script>
 <?php
-require "../gui/profile.js.php";
-include "../gui/footer.html";
+  require "../gui/profile.js.php";
+  include "../gui/footer.html";
 ?>

@@ -1,4 +1,3 @@
-const container = document.querySelector(".container");
 const oldpass = document.getElementById("oldpassword");
 const password = document.getElementById("password");
 const confirm_password = document.getElementById("confirm_password");

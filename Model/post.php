@@ -2,53 +2,35 @@
 class post
 {
 
-    /** @var int */
-    private int $id;
-
-    /** @var string */
-    private string $content;
-
-    /** @var [object Object] */
-    private media $media;
-
-
-
-
-    /**
-     * Default constructor
-     */
     public function __construct()
     {
-        // ...
+
     }
 
-    /**
-     * @return int
-     */
-    private function createNewID(): int
-    {
-        // TODO implement here
-        return 0;
+    public function showTopPosts(){
+      $db = new database();
+      return $db->showTopPosts();
     }
 
-    /**
-     * @param string $content
-     * @return void
-     */
-    private function setContent(string $content): void
+    public function getCommentCount($postID)
     {
-        // TODO implement here
-        return null;
+      $db = new database();
+      return $db->getCommentCount($postID);
     }
 
-    /**
-     * @param  $media
-     * @return void
-     */
-    private function uploadMedia( $media): void
+    private function createNewID()
     {
-        // TODO implement here
-        return null;
+
+    }
+
+    private function setContent($content)
+    {
+
+    }
+
+    private function uploadMedia($media)
+    {
+
     }
 
 }

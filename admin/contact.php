@@ -44,7 +44,7 @@
     $mail->addAddress('absallh43@gmail.com');
     //set replay to
     $mail->ClearReplyTos();
-    $mail->addReplyTo($_SESSION['email'], $_SESSION['firstName'].' '.$_SESSION['lastName']);
+    $mail->addReplyTo(constant("GMAILUSERNAME"), $_SESSION['firstName'].' '.$_SESSION['lastName']);
     //Finally send email
     if ($mail->send()){
       echo "<script>thank_to_the_user();</script>";

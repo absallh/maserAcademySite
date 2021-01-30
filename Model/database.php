@@ -30,6 +30,21 @@
       return $result;
     }
 
+    private function makeMultiRowQuery($query){
+      $result = array();
+      $mysqli = $this->connect_to_DB();
+      $res = $mysqli->query($query);
+      if ($res->num_rows > 0) {
+        while ($row = $res->fetch_assoc()) {
+          array_push($result, $row);
+        }
+        $mysqli->close();
+        return $result;
+      }
+      $mysqli->close();
+      return -1;
+    }
+
     private function insertData ($sql){
       $mysqli = $this->connect_to_DB();
       $result = $mysqli->query($sql);
@@ -71,22 +86,29 @@
     public function updateInfo ($email, $password, $firstName, $lastName, $age, $phone){
       $sql = "UPDATE person SET firstName='$firstName', lastName='$lastName',
           age= '$age', phone='$phone', person_password='$password' WHERE mail = '$email';";
-      if($this->insertData($sql)){
-        return true;
-      }else {
-        return false;
-      }
+      return $this->insertData($sql);
     }
 
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){
       $sql = "INSERT INTO person(mail, firstName, lastName, lastActive,
           permission, person_password, age, phone) VALUES ('$email', '$firstName', '$lastName',
          CURRENT_TIMESTAMP(), 2, '$password', '$birthday', '$phone');";
-      if($this->insertData($sql)){
-        return true;
-      }else {
-        return false;
-      }
+      return $this->insertData($sql);
+    }
+
+    public function showTopPosts()
+    {
+      $sql = "SELECT id, text_content, publish_time, firstName, lastName
+        FROM posts JOIN person ON posts.publisher = person.mail ORDER BY publish_time DESC LIMIT 10;";
+      return $this->makeMultiRowQuery($sql);
+    }
+
+    public function getCommentCount($postId)
+    {
+      $sql = "SELECT COUNT(comments.content) FROM comments JOIN posts
+        ON comments.post_id = posts.id WHERE post_id = $postId;";
+      $result =  $this->makeOneRowQuery($sql);
+      return $result['COUNT(comments.content)'];
     }
   }
  ?>
