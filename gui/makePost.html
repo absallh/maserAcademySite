@@ -9,7 +9,7 @@
     </div>
   </div>
 </div>
-<form method="post">
+<form action="./" method="post" enctype="multipart/form-data">
   <div class="makePostContainer">
     <i class="fas fa-times"></i>
     <div class="makePost">
@@ -21,16 +21,35 @@
       </div>
       <div class="divider"><hr /></div>
       <div class="likes_buttons">
-        <div class="uploadImg">
+        <div class="uploadImg" onclick="document.getElementById('uploadFile').click();">
           <i class="fas fa-photo-video photo-video-icon"></i>&nbsp;
           <span>Photo/Video</span>
+          <input type="file" name="file[]" style="display: none;" id="uploadFile" multiple>
         </div>
       </div>
+      <p style="text-align:center;" id="filesNames"></p>
       <div class="share_continar">
-        <button type="submit" name="submit" disabled>
-          <span>post</span>
-        </button>
+        <button type="submit" name="makePost" disabled><span>post</span></button>
       </div>
     </div>
   </div>
 </form>
+
+<script type="text/javascript">
+  var fileInput = document.getElementById("uploadFile");
+  var fileNameTxt = document.getElementById("filesNames");
+  fileInput.addEventListener("change", function(){
+    var file = this.files[0];
+    fileNameTxt.innerHTML = "";
+    if(file){
+      document.querySelector(".share_continar button").disabled = false;
+      for(var i = 0; i < this.files.length; i++){
+        file = this.files[i];
+        fileNameTxt.innerHTML += file.name;
+        fileNameTxt.innerHTML += "<br>";
+      }
+    }else if (document.querySelector(".makePostinput textarea").value.length <= 0) {
+      document.querySelector(".share_continar button").disabled = true;
+    }
+  });
+</script>

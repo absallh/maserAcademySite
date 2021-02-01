@@ -52,6 +52,54 @@
       return $result;
     }
 
+    public function publishAPost($content_txt, $publisher){
+      $result = -1;
+      $sql = "INSERT INTO posts (publisher, text_content, publish_time) VALUES
+      ('$publisher', '$content_txt', CURRENT_TIMESTAMP());";
+      $mysqli = $this->connect_to_DB();
+      if ($mysqli->query($sql)) {
+        $sql = "SELECT MAX(id) FROM posts WHERE publisher = '$publisher' AND text_content = '$content_txt';";
+        $res = $mysqli->query($sql);
+        if ($res->num_rows == 1) {
+          if ($row = $res->fetch_assoc()) {
+            $result = $row['MAX(id)'];
+          }
+        }else {
+          $mysqli->close();
+          return -1;
+        }
+      }else {
+        $mysqli->close();
+        return -1;
+      }
+      $mysqli->close();
+      return $result;
+    }
+
+    public function deletePost($postId){
+      $sql = "DELETE FROM personwatchedpost WHERE post_id = $postId;";
+      $this->insertData($sql);
+      $sql = "DELETE FROM comments WHERE post_id = $postId;";
+      $this->insertData($sql);
+      $sql = "DELETE FROM postmedia WHERE post_id = $postId;";
+      $this->insertData($sql);
+      $sql = "DELETE FROM posts WHERE id = $postId;";
+      $this->insertData($sql);
+    }
+
+    public function getPostMedia($postId)
+    {
+      $sql = "SELECT media_path, media_type FROM postmedia WHERE post_id = $postId;";
+      return $this->makeMultiRowQuery($sql);
+    }
+
+    public function uploadMadia($postId, $filePath, $fileType)
+    {
+      $sql = "INSERT INTO postmedia (post_id, media_path, media_type) VALUES
+            ($postId, '$filePath', '$fileType')";
+      return $this->insertData($sql);
+    }
+
     public function getPersonData ($email){
       $sql = "SELECT * FROM person WHERE mail = '$email';";
       return $this->makeOneRowQuery($sql);
@@ -110,5 +158,6 @@
       $result =  $this->makeOneRowQuery($sql);
       return $result['COUNT(comments.content)'];
     }
+
   }
  ?>

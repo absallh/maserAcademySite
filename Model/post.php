@@ -18,17 +18,12 @@ class post
       return $db->getCommentCount($postID);
     }
 
-    private function createNewID()
-    {
-
+    public function getMultimedia($postID){
+      $db = new database();
+      return $db->getPostMedia($postID);
     }
 
     private function setContent($content)
-    {
-
-    }
-
-    private function uploadMedia($media)
     {
 
     }

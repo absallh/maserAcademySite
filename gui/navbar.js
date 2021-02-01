@@ -5,10 +5,11 @@ const profileLink = document.getElementById('profileLink');
 const navImage = document.getElementById('NavImage');
 const navProfileSpan = document.getElementById('NavprofileSpan');
 const postIMGs = document.querySelectorAll('.news_feed_description img');
+const postVIDEO = document.querySelectorAll('.news_feed_description video');
 const fullscreenMode = document.querySelector('.fullscreenMode');
 const fullscreenButton = document.querySelector('.fullscreenMode i');
-const fullscreenIMG = document.querySelector('.fullscreen-img');
-const fullscreenTxt = document.querySelector('.fullscreen-caption');
+const fullscreenIMG = document.querySelector('#fullscreenIMG');
+const fullscreenVIDEO = document.querySelector('#fullscreenVIDEO');
 var fullscreenON = false;
 
 // call this to Disable scrolling
@@ -62,12 +63,15 @@ function openPostIMGs (){
   fullscreenMode.classList.toggle('open');
   //show the img
   fullscreenIMG.classList.toggle('open');
+  fullscreenVIDEO.classList.toggle('open');
   disableScroll();
   fullscreenON = true;
 }
 function closePostIMGs (){
   fullscreenMode.classList.toggle('open');
   fullscreenIMG.classList.toggle('open');
+  fullscreenVIDEO.classList.toggle('open');
+  fullscreenVIDEO.pause();
   enableScroll();
   fullscreenON = false;
 }
@@ -77,6 +81,17 @@ postIMGs.forEach(img => {
     openPostIMGs();
     //change the src of the img
     fullscreenIMG.src = img.getAttribute('src');
+    fullscreenIMG.style.display = 'block';
+    fullscreenVIDEO.style.display = 'none';
+  });
+});
+//videos at the post
+postVIDEO.forEach(video => {
+  video.addEventListener('click', ()=>{
+    openPostIMGs();
+    fullscreenIMG.style.display = 'none';
+    fullscreenVIDEO.style.display = 'block';
+    fullscreenVIDEO.src = video.getAttribute('src');
   });
 });
 //close full screen mode

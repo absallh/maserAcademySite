@@ -6,6 +6,9 @@
 <main>
   <?php
     include "../gui/makePost.html";
+    if (isset($_POST['makePost'])){
+      $model->publishAPost($_POST['postTXT'], $_FILES['file']);
+    }
     include "../gui/showHomePosts.php";
   ?>
 </main>

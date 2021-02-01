@@ -1,3 +1,9 @@
+<div class="fullscreenMode">
+  <i class="fas fa-times"></i>
+  <img src="" alt="" class="fullscreen-img" id="fullscreenIMG"/>
+  <video src="" autoplay controls id="fullscreenVIDEO" class="fullscreen-img" style="display: none;"></video>
+</div>
+
 <div class="content">
   <div class="content_center">
       <?php

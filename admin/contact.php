@@ -15,7 +15,7 @@
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
-  if (isset($_GET['message'])){
+  if (isset($_GET['message']) && (!isset($_GET['sent']))){
     //Create instance of PHPMailer
     $mail = new PHPMailer();
     //Set mailer to use smtp
@@ -47,13 +47,19 @@
     $mail->addReplyTo(constant("GMAILUSERNAME"), $_SESSION['firstName'].' '.$_SESSION['lastName']);
     //Finally send email
     if ($mail->send()){
-      echo "<script>thank_to_the_user();</script>";
+      $massage = $_GET['message'];
+      echo "<script>
+            thank_to_the_user();
+            window.location.replace(window.location.href.replace('message', 'sent'));
+            </script>";
     }else{
       echo "Message could not be sent. Mailer Error: "{$mail->ErrorInfo};
     }
     //Closing smtp connection
     $mail->smtpClose();
-    }
+  }else if (isset($_GET['sent'])) {
+    echo "<script>thank_to_the_user();</script>";
+  }
   ?>
 </main>
 <?php
