@@ -4,12 +4,6 @@ const navLinks = document.querySelectorAll('.nav-links li');
 const profileLink = document.getElementById('profileLink');
 const navImage = document.getElementById('NavImage');
 const navProfileSpan = document.getElementById('NavprofileSpan');
-const postIMGs = document.querySelectorAll('.news_feed_description img');
-const postVIDEO = document.querySelectorAll('.news_feed_description video');
-const fullscreenMode = document.querySelector('.fullscreenMode');
-const fullscreenButton = document.querySelector('.fullscreenMode i');
-const fullscreenIMG = document.querySelector('#fullscreenIMG');
-const fullscreenVIDEO = document.querySelector('#fullscreenVIDEO');
 var fullscreenON = false;
 
 // call this to Disable scrolling
@@ -17,12 +11,20 @@ function disableScroll() {
   // Get the current page scroll position
   scrollTop = window.pageYOffset;
   scrollLeft = window.pageXOffset;
+  jQuery('body').css({
+    'overflow': 'hidden',
+    'height'  : $( window ).height()
+    });
   window.onscroll = function() {
     window.scrollTo(scrollLeft, scrollTop);
   };
 }
 // call this to Enable scrolling
 function enableScroll() {
+  jQuery('body').css({
+    'overflowY': 'visible',
+    'height'  : $( window ).height()
+    });
   window.onscroll = function() {};
 }
 //profile link at the nav image show and hide
@@ -58,57 +60,3 @@ hamburger.addEventListener("click", () =>{
   //burger animation
   hamburger.classList.toggle('toggol');
 });
-function openPostIMGs (){
-  //open fullscreen
-  fullscreenMode.classList.toggle('open');
-  //show the img
-  fullscreenIMG.classList.toggle('open');
-  fullscreenVIDEO.classList.toggle('open');
-  disableScroll();
-  fullscreenON = true;
-}
-function closePostIMGs (){
-  fullscreenMode.classList.toggle('open');
-  fullscreenIMG.classList.toggle('open');
-  fullscreenVIDEO.classList.toggle('open');
-  fullscreenVIDEO.pause();
-  enableScroll();
-  fullscreenON = false;
-}
-//image at the post to open full screen mode
-postIMGs.forEach(img => {
-  img.addEventListener('click', ()=>{
-    openPostIMGs();
-    //change the src of the img
-    fullscreenIMG.src = img.getAttribute('src');
-    fullscreenIMG.style.display = 'block';
-    fullscreenVIDEO.style.display = 'none';
-  });
-});
-//videos at the post
-postVIDEO.forEach(video => {
-  video.addEventListener('click', ()=>{
-    openPostIMGs();
-    fullscreenIMG.style.display = 'none';
-    fullscreenVIDEO.style.display = 'block';
-    fullscreenVIDEO.src = video.getAttribute('src');
-  });
-});
-//close full screen mode
-fullscreenMode.addEventListener('click', (e)=>{
-  if (e.target.classList.contains('fullscreenMode')){
-    closePostIMGs();
-  }
-});
-document.onkeydown = function(evt) {
-  evt = evt || window.event;
-  if (evt.keyCode == 27) {
-    if (fullscreenON) {
-      closePostIMGs ();
-    }
-    if (makePostModeON) {
-      closeMakePostMode();
-    }
-  }
-};
-fullscreenButton.addEventListener('click', closePostIMGs);

@@ -1,0 +1,125 @@
+.publishPostContainer {
+  width: 50%;
+  min-width: 700px;
+  height: auto;
+  padding: 10px;
+  background: white;
+  border-radius: 49px;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh;
+}
+.publishPostContainer.fullmode {
+  z-index: 100;
+}
+.fullScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s ease-out;
+}
+.fullScreen.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.publishPostTop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 3px solid #f0f0f0;
+}
+.publishPostTop span {
+  color: #333;
+  font-size: 16px;
+}
+.closeBtn {
+  font-size: 20px;
+  color: #ff3333;
+  cursor: pointer;
+  display: none;
+}
+.closeBtn:hover {
+  color: #df0a0a;
+}
+.publishPostMiddel {
+  width: 100%;
+  text-align: center;
+}
+.publishPostMiddel textarea {
+  overflow: hidden;
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #333;
+  padding: 10px 0;
+  width: 100%;
+  height: 7vh;
+  resize: none;
+}
+.publishPostMiddel textarea::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+.publishPostMiddel span{
+  width: 33.3%;
+  cursor: pointer;
+  text-align: center;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: #7a7a7a;
+  font-weight: 500;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 5px;
+}
+.publishPostMiddel span:hover{
+  background: #f0f0f0;
+}
+.publishPostMiddel span i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.publishPostBottom {
+  border-top: 3px solid #f0f0f0;
+  text-align: center;
+}
+.publishPostBottom button {
+  width: 90%;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.publishPostBottom button:hover {
+  background-color: #4d84e2;
+}
+.publishPostBottom button:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  cursor: not-allowed;
+}
+@media screen and (max-width: 768px) {
+  .publishPostContainer{
+    width: 100%;
+    min-width: 0;
+  }
+}

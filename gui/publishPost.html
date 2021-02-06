@@ -1,0 +1,18 @@
+<form class="publishPostContainer" action="./" method="post" enctype="multipart/form-data">
+    <div class="publishPostTop">
+      <span><i class="far fa-edit"></i> Publish Post</span>
+      <div class="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <div class="publishPostMiddel">
+      <textarea placeholder="What's in your mind, Coach?"></textarea>
+      <span style="display: none;" onclick="document.getElementById('uploadFile').click();"><i class="fas fa-photo-video"></i> Photos/Videos</span>
+      <p id="filesName">  </p>
+      <input type="file" name="file[]" style="display: none;" id="uploadFile" multiple>
+    </div>
+    <div class="publishPostBottom" style="display: none;">
+      <button type="submit" name="makePost" disabled><i class="fas fa-cloud-upload-alt"></i> post</button>
+    </div>
+  <script src="../gui/publishPost.js" charset="utf-8"></script>
+</form>

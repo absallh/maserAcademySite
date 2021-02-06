@@ -1,6 +1,6 @@
 <?php
 include_once "../Model/member.php";
-include "../gui/navbar.html";
+include "../gui/navbar.php";
 $model = new member();
 ?>
 <main>

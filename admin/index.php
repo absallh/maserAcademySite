@@ -1,19 +1,14 @@
 <?php
+  //start the session
   include_once "../Model/admin.php";
-  include "../gui/navbar.html";
   $model = new admin();
+  include "../gui/navbar.php";
 ?>
 <main>
   <?php
-    include "../gui/makePost.html";
-    if (isset($_POST['makePost'])){
-      $model->publishAPost($_POST['postTXT'], $_FILES['file']);
-    }
-    include "../gui/showHomePosts.php";
-  ?>
+    include "../gui/publishPost.html";
+   ?>
 </main>
-<script src="../gui/admin.js"></script>
 <?php
-  require "../gui/profile.js.php";
   include "../gui/footer.html";
 ?>

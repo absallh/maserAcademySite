@@ -6,14 +6,8 @@ class admin extends person
     private $allowed;
     public function __construct()
     {
-      $this->allowed = array('psb', 'bmp', 'rle', 'dib', 'dcm', 'dc3', 'dic', 'eps', 'psd',
-          'pdd', 'psdt', 'gif', 'iff', 'tdi', 'jpg', 'jpeg', 'jpe', 'jpf', 'jpx', 'jp2',
-          'j2c', 'j2k', 'jpc', 'jps', 'mpo', 'pcx', 'raw', 'pxr', 'png', 'pbm', 'pgm',
-          'ppm', 'pnm', 'pfm', 'pam', 'sct', 'tga', 'vda', 'icb', 'vst', 'tif', 'tiff',
-          'svg', 'webm', 'mkv', 'flv', 'vob', 'ogv', 'ogg', 'drc', 'gifv', 'mng', 'avi',
-          'mts', 'm2ts', 'ts', 'mov', 'qt', 'wmv', 'yuv', 'rm', 'rmvb', 'viv', 'asf',
-          'amv', 'mp4', 'm4p', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', 'm2v', 'm4v', 'svi',
-          '3gp', '3g2', 'mxf', 'roq', 'nsv', 'f4v', 'f4p', 'f4a', 'f4b');
+      $this->allowed = array('png', 'jpg','jpeg', 'gif', 'bmp', 'ogg', 'ogv',
+                            'avi', 'mov', 'wmv', 'flv', 'mp4', 'm4v', 'mpg');
         include_once "admin_session.php";
         $db = New database();
         $db->updateLastActiveTime($_SESSION['email']);
