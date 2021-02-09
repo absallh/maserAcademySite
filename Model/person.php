@@ -111,5 +111,21 @@ class person
           return false;
         }
     }
-
+    public function showTopPosts()
+    {
+      $postModel = new post();
+      $result = $postModel->showTopPosts();
+      if($result == -1){
+        echo "<center>No Posts yet!</center>";
+      }else {
+        foreach ($result as $res) {
+          $post_id = $res['id'];
+          $postPublisher = $res['firstName'].' '. $res['lastName'];
+          $postTxt = $res['text_content'];
+          $postTime = strtotime($res['publish_time']);
+          $commentCount = $postModel->getCommentCount($post_id);
+          include "../gui/showPost.php";
+        }
+      }
+    }
 }

@@ -1,32 +1,19 @@
+.centerDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .publishPostContainer {
   width: 50%;
-  min-width: 700px;
+  min-width: 768px;
   height: auto;
   padding: 10px;
   background: white;
   border-radius: 49px;
-  align-items: center;
-  justify-content: center;
   margin: 1vh;
 }
 .publishPostContainer.fullmode {
   z-index: 100;
-}
-.fullScreen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 10;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s ease-out;
-}
-.fullScreen.open {
-  opacity: 1;
-  pointer-events: all;
 }
 .publishPostTop {
   width: 100%;

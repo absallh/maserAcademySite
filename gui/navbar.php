@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../gui/style.css" />
     <link rel="stylesheet" href="../gui/publishPost.css" />
+    <link rel="stylesheet" href="../gui/showPost.css" />
     <link rel="icon" href="../image/icons8-stadium-80.png" type="image/icon type">
     <script src="https://kit.fontawesome.com/21523987e0.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>

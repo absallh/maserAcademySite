@@ -2,6 +2,8 @@ var makePostModeON = false;
 $('.publishPostMiddel textarea').focus(function() {
   $('.fullScreen').addClass('open');
   $('.publishPostContainer').addClass('fullmode');
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   $('.publishPostMiddel textarea').animate({height: "20vh"}, 500);
   $('.publishPostMiddel textarea').css('overflow','visible');
   $('.closeBtn').show(500);
@@ -30,11 +32,6 @@ function closePublishPost() {
   enableScroll();
 }
 $('.closeBtn').click(closePublishPost);
-$('.fullScreen').click((e)=>{
-  if(e.target.classList.contains('fullScreen')){
-    closePublishPost();
-  }
-});
 $('#uploadFile').change(function() {
   var file = this.files[0];
   $('#filesName').html("");
