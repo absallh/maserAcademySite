@@ -19,7 +19,7 @@
   background: white;
   border-radius: 39px;
   min-width: 768px;
-  padding: 15px;
+  padding: 10px 10px 5px 10px;
   margin: 10px;
   width: 50vw;
   margin: 10px auto;
@@ -47,6 +47,7 @@
 .postMatadata h4 {
   color: #333;
   font-weight: 500;
+  font-size: 15px;
 }
 .postMatadata span {
   color: #777;
@@ -57,14 +58,18 @@
 }
 .threeDots {
   cursor: pointer;
-  padding: 10px;
+  padding: 5px 12px;
+  border-radius: 100%;
+}
+.threeDots:hover {
+  background: #d0d0d0;
 }
 .threeDots div {
   border-radius: 100%;
-  width: 5px;
-  height: 5px;
+  width: 3px;
+  height: 3px;
   background: #777;
-  margin: 5px;
+  margin: 3px;
 }
 .postMenu {
   min-width: 300px;
@@ -115,9 +120,9 @@
 .PostText {
   padding: 0 15px;
   color: #000;
-  font-size: 15px;
+  font-size: 16px;
   text-align: left;
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
 .gallery {
   display: grid;
@@ -168,6 +173,156 @@
   font-size: 50px;
   color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
+}
+.bottomPost {
+  width: 100%;
+}
+.upperBottomPost{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.commentCount {
+  color: #777;
+  font-size: 14px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.bottomBottomPost {
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.commentsBTN{
+  width: 30%;
+  min-width: 130px;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  border-radius: 39px;
+  cursor: pointer;
+}
+.commentsBTN:hover{
+  background: #f0f0f0;
+}
+.comments {
+  display: none;
+  padding: 0px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  min-height: 500px;
+  width: 100%;
+  background: white;
+  border-radius: 39px;
+}
+.topCommentsDIV{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.bottomCommentsDIV {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+  padding: 5px 15px;
+}
+.bottomCommentsDIV form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.writeCommentInput {
+  width: 90%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  border-radius: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+.writeCommentInput i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.writeCommentInput input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  width: 90%;
+  color: #333;
+}
+.writeCommentInput input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+.writeCommentBTN{
+  font-size: 20px;
+  color: #4d84e2;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 100%;
+}
+.writeCommentBTN:hover {
+  color: #5995fd;
+  background: #f0f0f0;
+}
+.midelCommentsDIV {
+  overflow-x: scroll;
+  max-height: 375px;
+}
+.oneComment {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 10px 0;
+}
+.commentContainer {
+  background: #f0f0f0;
+  padding: 10px 15px;
+  border-radius: 39px;
+  max-width: 90%;
+}
+.commentMatadata {
+  display: grid;
+}
+.commentMatadata h4 {
+  color: #555;
+  font-size: 13px;
+}
+.commentMatadata span {
+  color: #999;
+  font-size: 10px;
+}
+.commentTXT{
+  color: #333;
+  font-size: 15px;
+  padding: 5px;
+}
+.topComment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 @media screen and (max-width: 768px) {
   .showPostContainer{

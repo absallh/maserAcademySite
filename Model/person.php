@@ -124,6 +124,7 @@ class person
           $postTxt = $res['text_content'];
           $postTime = strtotime($res['publish_time']);
           $commentCount = $postModel->getCommentCount($post_id);
+          $multimedia = $postModel->getMultimedia($post_id);
           include "../gui/showPost.php";
         }
       }

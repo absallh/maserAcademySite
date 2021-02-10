@@ -29,3 +29,11 @@ function closeShowImage() {
   $('.img-container video').trigger('pause');
   enableScroll();
 }
+function openComments(postId) {
+  $('#'+postId+'C').show();
+  $('#'+postId+'Post').hide();
+}
+function closeComments(postId) {
+  $('#'+postId+'C').hide();
+  $('#'+postId+'Post').show();
+}

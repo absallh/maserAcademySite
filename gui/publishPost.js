@@ -6,7 +6,7 @@ $('.publishPostMiddel textarea').focus(function() {
   document.documentElement.scrollTop = 0;
   $('.publishPostMiddel textarea').animate({height: "20vh"}, 500);
   $('.publishPostMiddel textarea').css('overflow','visible');
-  $('.closeBtn').show(500);
+  $('.publishPostTop .closeBtn').show(500);
   $('.publishPostMiddel span').show(500);
   $('.publishPostBottom').show(500);
   makePostModeON = true;
@@ -25,7 +25,7 @@ function closePublishPost() {
   $('.publishPostMiddel textarea').animate({height: "7vh"}, 500);
   $('.publishPostMiddel textarea').css('overflow','hidden');
   $('.publishPostMiddel textarea').blur();
-  $('.closeBtn').hide(500);
+  $('.publishPostTop .closeBtn').hide(500);
   $('.publishPostMiddel span').hide(500);
   $('.publishPostBottom').hide(500);
   makePostModeON = false;

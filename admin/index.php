@@ -8,6 +8,9 @@
   <div class="centerDiv">
     <?php
       include "../gui/publishPost.html";
+      if (isset($_POST['makePost'])) {
+        $model->publishAPost($_POST['postTXT'], $_FILES['file']);
+      }
      ?>
   </div>
   <?php
