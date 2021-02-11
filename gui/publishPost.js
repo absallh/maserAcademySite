@@ -1,4 +1,3 @@
-var makePostModeON = false;
 $('.publishPostMiddel textarea').focus(function() {
   $('.fullScreen').addClass('open');
   $('.publishPostContainer').addClass('fullmode');
@@ -6,7 +5,7 @@ $('.publishPostMiddel textarea').focus(function() {
   document.documentElement.scrollTop = 0;
   $('.publishPostMiddel textarea').animate({height: "20vh"}, 500);
   $('.publishPostMiddel textarea').css('overflow','visible');
-  $('.publishPostTop .closeBtn').show(500);
+  $('.publishPostContainer .publishPostTop .closeBtn').show(500);
   $('.publishPostMiddel span').show(500);
   $('.publishPostBottom').show(500);
   makePostModeON = true;
@@ -25,13 +24,13 @@ function closePublishPost() {
   $('.publishPostMiddel textarea').animate({height: "7vh"}, 500);
   $('.publishPostMiddel textarea').css('overflow','hidden');
   $('.publishPostMiddel textarea').blur();
-  $('.publishPostTop .closeBtn').hide(500);
+  $('.publishPostContainer .publishPostTop .closeBtn').hide(500);
   $('.publishPostMiddel span').hide(500);
   $('.publishPostBottom').hide(500);
   makePostModeON = false;
   enableScroll();
 }
-$('.closeBtn').click(closePublishPost);
+$('.publishPostContainer .publishPostTop .closeBtn').click(closePublishPost);
 $('#uploadFile').change(function() {
   var file = this.files[0];
   $('#filesName').html("");
@@ -46,3 +45,20 @@ $('#uploadFile').change(function() {
     $('.publishPostBottom button').attr('disabled', true);
   }
 });
+function openEditPost(postId) {
+  editPost = true;
+  postID = postId;
+  $('.fullScreen').removeClass('exitPostMenu');
+  $('.fullScreen').addClass('open');
+  $('.editPostMiddel textarea').val($('#'+postId + 'TXT').html().replace('<br>', '\n'));
+  $('button[name="EditPost"]').val(postId);
+  $('#'+postId+'M').hide(500);
+  $('.editPostContainer').show(500);
+  disableScroll();
+}
+function closeEditPost() {
+  editPost = false;
+  $('.fullScreen').removeClass('open');
+  $('.editPostContainer').hide(500);
+  enableScroll();
+}

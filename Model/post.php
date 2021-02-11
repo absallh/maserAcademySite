@@ -23,9 +23,16 @@ class post
       return $db->getPostMedia($postID);
     }
 
-    private function setContent($content)
+    public function updateContent($post_id, $content)
     {
+      $db = new database();
+      return $db->updatePostContent($post_id, $content);
+    }
 
+    public function getTopComments($post_id)
+    {
+      $db = new database();
+      return $db->getTopPostComments($post_id);
     }
 
 }

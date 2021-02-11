@@ -100,9 +100,27 @@
       return $this->insertData($sql);
     }
 
+    public function updatePostContent($post_id, $content)
+    {
+      $sql = "UPDATE posts SET text_content = '$content' WHERE id = $post_id;";
+      return $this->insertData($sql);
+    }
+
     public function getPersonData ($email){
       $sql = "SELECT * FROM person WHERE mail = '$email';";
       return $this->makeOneRowQuery($sql);
+    }
+
+    public function getTopPostComments($post_id)
+    {
+      $sql = "SELECT mail, firstName, lastName, commentTime, content FROM comments
+              JOIN person ON person.mail = comments.person AND post_id = $post_id;";
+      return $this->makeMultiRowQuery($sql);
+    }
+
+    public function commentOnPost($post_id, $publisher)
+    {
+      // code...
     }
 
     public function getTshirtNumber($email)

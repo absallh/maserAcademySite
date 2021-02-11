@@ -6,8 +6,7 @@
 ?>
 <main>
   <?php
-    include "../gui/showPost.php";
-    include "../gui/showPost.php";
+    $model->showTopPosts();
    ?>
    <script src="../gui/closeFullScreen.js" charset="utf-8"></script>
    <script src="../gui/showPost.js" charset="utf-8"></script>

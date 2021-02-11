@@ -17,6 +17,7 @@ class admin extends person
     public function publishAPost($content_txt, $media)
     {
         $db = New database();
+        $content_txt = trim(preg_replace('~[\r\n]+~', '<br>', $content_txt));
         $postId = $db->publishAPost($content_txt, $_SESSION['email']);
         if($media['name'][0]){
           $notAllowedCount = 0;
@@ -48,6 +49,7 @@ class admin extends person
           }
         }
         echo "<script>window.location.replace('./');</script>";
+        exit;
     }
 
     public function deletePost($post_id)
@@ -60,6 +62,17 @@ class admin extends person
           }
         }
         $db->deletePost($post_id);
+        header('Location: ./');
+        exit;
+    }
+
+    public function updatePost($post_id, $content_txt)
+    {
+      $postModel = new post();
+      $content_txt = trim(preg_replace('~[\r\n]+~', '<br>', $content_txt));
+      $postModel->updateContent($post_id, $content_txt);
+      header('Location: ./');
+      exit;
     }
 
     private function updateMemberInfo($email, $password, $fname, $lastname, $age, $phone)

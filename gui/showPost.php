@@ -5,7 +5,7 @@
         <img src="../image/soccer.svg">
         <div class="postMatadata">
           <h4><?php echo $postPublisher; ?></h4>
-          <span><?php echo date("j-M-Y g:i A", $postTime); ?> <i class="fas fa-globe-africa"></i></span>
+          <span>&nbsp;&nbsp;<?php echo date("j-M-Y g:i A", $postTime); ?> <i class="fas fa-globe-africa"></i></span>
         </div>
       </div>
       <div class="leftTopPost">
@@ -20,30 +20,30 @@
         </div>
       </div>
       <div class="postMenu" style="display: none;" id="<?php echo $post_id.'M'; ?>">
-        <div class="postMenuContent">
-          <a href="#" class="postMenuItem">
+        <div class="postMenuContent" onclick="openEditPost(<?php echo $post_id; ?>)">
+          <div class="postMenuItem">
             <i class="far fa-edit"></i>
             <div class="postMenuText">
               <h3>Edit</h3>
-              <small>edit post text and video content.</small>
+              <small>edit post text only(you can't edit media).</small>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="postMenuContent">
-          <a href="#" class="postMenuItem">
+        <div class="postMenuContent" onclick="window.location.href = './?DeletePost=<?php echo $post_id; ?>';">
+          <div class="postMenuItem">
             <i class="fas fa-trash"></i>
             <div class="postMenuText">
               <h3>Delete</h3>
               <small>delete the post from all news feeds.</small>
             </div>
-          </a>
+          </div>
         <?php
         }
        ?>
      </div>
     </div>
     <div class="midelPost">
-      <p class="PostText"><?php echo  $postTxt;?></p>
+      <p class="PostText" id="<?php echo $post_id.'TXT';?>"><?php echo  $postTxt;?></p>
         <?php
         if ($multimedia != -1) {
           ?>
@@ -90,34 +90,43 @@
       </div>
     </div>
     <div class="midelCommentsDIV">
-      <div class="oneComment">
-        <div class="commentContainer">
-          <div class="topComment">
-            <div class="commentMatadata">
-              <h4><?php echo $postPublisher; ?></h4>
-              <span>&nbsp;&nbsp;<?php echo date("j-M-Y g:i A", $postTime); ?></span>
-            </div>
-            <div class="threeDots">
-              <div></div>
-              <div></div>
-              <div></div>
+      <?php
+      if ($comments != -1) {
+        foreach ($comments as $oneComment) {
+          ?>
+          <div class="oneComment">
+            <div class="commentContainer">
+              <div class="topComment">
+                <div class="commentMatadata">
+                  <h4><?php echo $oneComment['firstName'].' '.$oneComment['lastName']; ?></h4>
+                  <span>&nbsp;&nbsp;<?php echo date("j-M-Y g:i A", strtotime($oneComment['commentTime'])); ?></span>
+                  <div class="commentTXT">
+                    <p><?php echo $oneComment['content']; ?></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="commentTXT">
-            <p>something</p>
+          <?php
+          if (($_SESSION['permission'] == 1) || ($oneComment['mail'] == $_SESSION['email'])) {
+          ?>
+          <div class="commentOption">
+            <span>Edit</span>&nbsp; - &nbsp;<span>Delete</span>
           </div>
-        </div>
-      </div>
-
+          <?php
+          }
+        }
+      }
+       ?>
     </div>
     <div class="bottomCommentsDIV">
-      <form method="post">
+      <form method="get">
         <div class="writeCommentInput">
           <i class="far fa-comment-dots"></i>
           <input type="text" name="commentTXT" placeholder="Write a Comment">
         </div>
         <button class="writeCommentBTN" type="submit" name="comment" value="<?php echo $post_id;?>">
-          <i class="far fa-paper-plane"></i>
+          <i class="fas fa-share"></i>
         </button>
       </form>
     </div>

@@ -21,6 +21,7 @@ class person
 
     public function login($email, $password)
     {
+
         $email = filter_var($email, FILTER_SANITIZE_STRING);
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $password = filter_var($password, FILTER_SANITIZE_STRING);
@@ -125,6 +126,7 @@ class person
           $postTime = strtotime($res['publish_time']);
           $commentCount = $postModel->getCommentCount($post_id);
           $multimedia = $postModel->getMultimedia($post_id);
+          $comments = $postModel->getTopComments($post_id);
           include "../gui/showPost.php";
         }
       }

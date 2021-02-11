@@ -9,6 +9,8 @@ document.onkeydown = function(evt) {
       postMenu = false;
       $('#'+postID+'M').hide(500);
       $('.fullScreen').removeClass('exitPostMenu');
+    }else if (editPost) {
+      closeEditPost();
     }
   }
 };
@@ -23,5 +25,8 @@ $('.fullScreen').click((e)=>{
     postMenu = false;
     $('#'+postID+'M').hide(500);
     $('.fullScreen').removeClass('exitPostMenu');
+  }
+  else if ((editPost) && e.target.classList.contains('fullScreen')) {
+    closeEditPost();
   }
 });

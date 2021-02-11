@@ -5,7 +5,6 @@
     $person->enterTheSystem($_SESSION['permission']);
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +23,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="index.php" method="post" class="sign-in-form" name="sign-in-form">
+          <form action="./" method="post" class="sign-in-form" name="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -34,9 +33,9 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" name="pass" required/>
             </div>
-            <input type="submit" value="Login" class="btn solid" name="login"/>
+            <input type="submit" value="login" class="btn solid" name="login"/>
           </form>
-          <form action="index.php" method="post" class="sign-up-form">
+          <form action="./" method="post" class="sign-up-form">
             <div class="singu_part" id="first_signup">
               <h2 class="title">Sign up</h2>
               <div class="input-field">
@@ -125,6 +124,7 @@
 </html>
 <?php
   if (isset($_POST["login"])){
+
     $person = New person();
     $person->login($_POST["userName"], $_POST["pass"]);
   }

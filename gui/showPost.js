@@ -1,6 +1,8 @@
 var postID = null;
 var postMenu = false;
 var showImage = false;
+var editPost = false;
+var makePostModeON = false;
 function openPostMenu(postId) {
   postID = postId;
   postMenu = true;
