@@ -75,9 +75,42 @@ class admin extends person
       exit;
     }
 
+    public function showAllMember()
+    {
+        $db = new database();
+        $result = $db->allMembers();
+        if ($result == -1) {
+          echo "<center>There is no trainee yet!</center>";
+        }else {
+          foreach ($result as $member) {
+            $memberEmail = $member['mail'];
+            $memberName = $member['firstName'].' '.$member['lastName'];
+            $memberAge = $member['age'];
+            $t_shirt = $db->getTshirtNumber($memberEmail);
+            $payed = $db->isPayed($memberEmail);
+            if ($t_shirt == -1) {
+              $t_shirt = 'None';
+            }
+            include "../gui/MemberCard.php";
+          }
+        }
+    }
+
     private function updateMemberInfo($email, $password, $fname, $lastname, $age, $phone)
     {
         return ;
+    }
+
+    public function selectMemberPayed($email)
+    {
+        $db = new database();
+        return $db->selectMemberPayed($email);
+    }
+
+    public function selectMemberNotPayed($email)
+    {
+        $db = new database();
+        return $db->deletePayed($email);
     }
 
     private function deleteMember($memberEmail)

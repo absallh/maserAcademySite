@@ -114,13 +114,15 @@
     public function getTopPostComments($post_id)
     {
       $sql = "SELECT mail, firstName, lastName, commentTime, content FROM comments
-              JOIN person ON person.mail = comments.person AND post_id = $post_id;";
+              JOIN person ON person.mail = comments.person AND post_id = $post_id ORDER BY commentTime ASC LIMIT 10;";
       return $this->makeMultiRowQuery($sql);
     }
 
-    public function commentOnPost($post_id, $publisher)
+    public function commentOnPost($post_id, $comment_txt, $publisher)
     {
-      // code...
+      $sql = "INSERT INTO comments(person, commentTime, content, post_id)
+              VALUES ('$publisher', CURRENT_TIMESTAMP(), '$comment_txt', $post_id);";
+      return $this->insertData($sql);
     }
 
     public function getTshirtNumber($email)
@@ -155,6 +157,19 @@
       return $this->insertData($sql);
     }
 
+    public function selectMemberPayed($email)
+    {
+      $sql = "INSERT INTO payed(person, payedDate) VALUES ('$email', CURRENT_TIMESTAMP());";
+      return $this->insertData($sql);
+    }
+
+    public function deletePayed($email)
+    {
+      $sql = "DELETE FROM payed WHERE person = '$email' AND payedDate =
+              (SELECT MAX(payedDate) FROM payed WHERE person = '$email')";
+      return $this->insertData($sql);
+    }
+
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){
       $sql = "INSERT INTO person(mail, firstName, lastName, lastActive,
           permission, person_password, age, phone) VALUES ('$email', '$firstName', '$lastName',
@@ -177,5 +192,17 @@
       return $result['COUNT(comments.content)'];
     }
 
+    public function allMembers()
+    {
+      $sql = "SELECT mail, firstName, lastName, YEAR(CURDATE()) - YEAR(age) AS age FROM person WHERE person.permission = 2;";
+      return $this->makeMultiRowQuery($sql);
+    }
+    public function isPayed($email)
+    {
+      $sql = "SELECT COUNT(person) FROM payed WHERE person = '$email' AND
+              payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY);";
+      $result = $this->makeOneRowQuery($sql);
+      return ($result['COUNT(person)'] != 0);
+    }
   }
  ?>

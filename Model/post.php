@@ -35,4 +35,10 @@ class post
       return $db->getTopPostComments($post_id);
     }
 
+    public function makeComment($post_id, $comment_txt, $publisher)
+    {
+      $db = new database();
+      $db->commentOnPost($post_id, $comment_txt, $publisher);
+    }
+
 }

@@ -8,6 +8,8 @@
     $model->deletePost($_GET['DeletePost']);
   }elseif (isset($_GET['EditPost'])) {
     $model->updatePost($_GET['EditPost'], $_GET['postTXT']);
+  }elseif (isset($_GET['comment'])) {
+    $model->comment($_GET['comment'], $_GET['commentTXT']);
   }
   include "../gui/navbar.php";
 ?>
@@ -36,6 +38,9 @@
   <?php
     $model->showTopPosts();
    ?>
+   <div class="leftHomeContainer">
+     <a href="./allTrainee"><i class="fas fa-users"></i>&nbsp;All trainee </a>
+   </div>
    <script src="../gui/closeFullScreen.js" charset="utf-8"></script>
    <script src="../gui/showPost.js" charset="utf-8"></script>
 </main>

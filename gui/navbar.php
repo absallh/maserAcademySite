@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../gui/style.css" />
-    <link rel="stylesheet" href="../gui/publishPost.css" />
+    <?php
+      if ($_SESSION['permission'] == 1) {
+        ?>
+        <link rel="stylesheet" href="../gui/publishPost.css" />
+        <link rel="stylesheet" href="../gui/AllMember.css" />
+
+        <?php
+      }
+   ?>
     <link rel="stylesheet" href="../gui/showPost.css" />
     <link rel="icon" href="../image/icons8-stadium-80.png" type="image/icon type">
     <script src="https://kit.fontawesome.com/21523987e0.js" crossorigin="anonymous"></script>
@@ -26,8 +34,17 @@
         <ul class="nav-links">
           <li id="homeLink"><a class="home" href="./"><i class="fas fa-home"></i>&nbsp;Home</a></li>
           <li id="profileLink">
-            <a><i class="fas fa-user-circle" id="NavImage"></i>&nbsp;<span id="NavprofileSpan">omar</span></a>
+            <a><i class="fas fa-user-circle" id="NavImage"></i>&nbsp;<span id="NavprofileSpan"><?php echo $_SESSION['firstName']; ?></span></a>
           </li>
+          <?php
+            if ($_SESSION['permission'] == 1) {
+              ?>
+              <li class="allTraineeLink">
+                <a href="./allTrainee"><i class="fas fa-users"></i>&nbsp;All trainee</a>
+              </li>
+              <?php
+            }
+           ?>
           <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a></li>
         </ul>
       </nav>

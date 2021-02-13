@@ -1,3 +1,4 @@
 RewriteEngine on
 RewriteRule ^profile/?$ profileindex.php
 RewriteRule ^contact/?$ contact.php
+RewriteRule ^allTrainee/?$ allMember.php

@@ -84,9 +84,12 @@ class person
       }
     }
 
-    private function comment(int $post_id, string $comment_txt, time $time, string $publisher): void
+    public function comment($post_id, $comment_txt)
     {
-        return;
+        $comment_txt = filter_var($comment_txt, FILTER_SANITIZE_STRING);
+        $postModel = new post();
+        $postModel->makeComment($post_id, $comment_txt, $_SESSION['email']);
+        header ('Location: ./');
     }
 
     private function updateComment(int $post_id, string $comment_txt, time $time, string $publisher): void

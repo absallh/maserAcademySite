@@ -144,6 +144,29 @@
   color: #aaa;
   font-weight: 500;
 }
+.leftHomeContainer{
+  width: 25vw;
+  position: fixed;
+  top: 13vh;
+  left: 2vw;
+}
+.leftHomeContainer a {
+  text-decoration: none;
+  color: #777;
+}
+.leftHomeContainer a:hover {
+  color: #333;
+}
+.allTraineeLink {
+  display: none;
+}
+@media screen and (max-width: 1050px){
+  .leftHomeContainer{
+    position: sticky;
+    width: 100vw;
+    padding-left: 2vw;
+  }
+}
 @media screen and (max-width: 768px) {
   .publishPostContainer{
     width: 100vw;
@@ -152,5 +175,11 @@
   .editPostContainer{
     width: 100%;
     min-width: 0;
+  }
+  .leftHomeContainer {
+    display: none;
+  }
+  .allTraineeLink {
+    display: flex;
   }
 }

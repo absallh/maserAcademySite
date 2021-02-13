@@ -35,4 +35,14 @@ if(isset($_GET['call_type']))
 			'data'=>$validate
 		));
 	}
+	elseif ($call_type == "memberCheckedPayed") {
+		include "../Model/admin.php";
+		$model = new admin();
+		$model->selectMemberPayed($_GET['member']);
+	}
+	elseif ($call_type == "memberNotPayed") {
+		include "../Model/admin.php";
+		$model = new admin();
+		$model->selectMemberNotPayed($_GET['member']);
+	}
 }

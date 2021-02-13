@@ -123,7 +123,7 @@
       <form method="get">
         <div class="writeCommentInput">
           <i class="far fa-comment-dots"></i>
-          <input type="text" name="commentTXT" placeholder="Write a Comment">
+          <input type="text" name="commentTXT" placeholder="Write a Comment" required>
         </div>
         <button class="writeCommentBTN" type="submit" name="comment" value="<?php echo $post_id;?>">
           <i class="fas fa-share"></i>
