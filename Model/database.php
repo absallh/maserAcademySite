@@ -194,9 +194,55 @@
 
     public function allMembers()
     {
-      $sql = "SELECT mail, firstName, lastName, YEAR(CURDATE()) - YEAR(age) AS age FROM person WHERE person.permission = 2;";
+      $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0 AS age,
+              (SELECT COUNT(person) FROM payed WHERE person = person.mail AND
+              payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY)) AS payed,
+              (SELECT theNumber FROM playernumber WHERE playernumber.player = person.mail) AS number
+              FROM person WHERE permission = 2";
       return $this->makeMultiRowQuery($sql);
     }
+
+    public function searchOnMembers($key)
+    {
+      if (is_numeric($key)) {
+        $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0 AS age,
+                (SELECT COUNT(person) FROM payed WHERE person = person.mail AND
+                payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY))
+                AS payed, (SELECT theNumber FROM playernumber WHERE playernumber.player = person.mail)
+                AS number FROM person LEFT JOIN playernumber ON person.mail = playernumber.player
+                WHERE permission = 2 AND (age = $key OR phone LIKE '%$key%' OR playernumber.theNumber = $key);";
+      }
+      else {
+        $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0
+                AS age, (SELECT COUNT(person) FROM payed WHERE person = person.mail AND
+                payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY))
+                AS payed, (SELECT theNumber FROM playernumber WHERE playernumber.player = person.mail)
+                AS number FROM person WHERE permission = 2 AND (mail LIKE '%$key%' OR
+               CONCAT(firstName, ' ', lastName) LIKE '%$key%');";
+      }
+      return $this->makeMultiRowQuery($sql);
+    }
+
+    public function getPayedMember()
+    {
+      $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0
+              AS age, 1 AS payed, (SELECT theNumber FROM playernumber WHERE
+              playernumber.player = person.mail) AS number FROM person JOIN payed
+              ON payed.person = person.mail AND payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY);";
+      return $this->makeMultiRowQuery($sql);
+
+    }
+
+    public function getNotPayedMember()
+    {
+      $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0
+              AS age, 0 AS payed, (SELECT theNumber FROM playernumber WHERE
+              playernumber.player = person.mail) AS number FROM person WHERE
+              permission = 2 AND (person.mail) NOT IN (SELECT payed.person FROM
+              payed WHERE payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY));";
+      return $this->makeMultiRowQuery($sql);
+    }
+
     public function isPayed($email)
     {
       $sql = "SELECT COUNT(person) FROM payed WHERE person = '$email' AND

@@ -86,14 +86,27 @@ class admin extends person
             $memberEmail = $member['mail'];
             $memberName = $member['firstName'].' '.$member['lastName'];
             $memberAge = $member['age'];
-            $t_shirt = $db->getTshirtNumber($memberEmail);
-            $payed = $db->isPayed($memberEmail);
-            if ($t_shirt == -1) {
+            $t_shirt = $member['number'];
+            $payed = ($member['payed'] == 1);
+            if ($t_shirt == null) {
               $t_shirt = 'None';
             }
             include "../gui/MemberCard.php";
           }
         }
+    }
+
+    public function searchOnMembers($key){
+        $db = new database();
+        $result;
+        if ((strtolower($key) == "paid") || (strtolower($key) == "payed") || (strtolower($key) == "true")) {
+          $result = $db->getPayedMember();
+        }elseif ((strtolower($key) == "not paid") || (strtolower($key) == "not payed") || (strtolower($key) == "false")) {
+          $result = $db->getNotPayedMember();
+        }else {
+          $result = $db->searchOnMembers($key);
+        }
+        return $result;
     }
 
     private function updateMemberInfo($email, $password, $fname, $lastname, $age, $phone)

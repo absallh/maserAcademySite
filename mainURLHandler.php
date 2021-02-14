@@ -45,4 +45,30 @@ if(isset($_GET['call_type']))
 		$model = new admin();
 		$model->selectMemberNotPayed($_GET['member']);
 	}
+	elseif ($call_type == "searchOnMembers") {
+		//get url
+		$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+		$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$keySearch = $_GET['keySearch'];
+		include "../Model/admin.php";
+		$model = new admin();
+		$db = new database();
+		$result = $model->searchOnMembers($_GET['keySearch']);
+		if ($result != -1) {
+			foreach ($result as $member) {
+				$member['payed'] = $db->isPayed($member['mail']);
+				$member['t_shirt'] = $db->getTshirtNumber($member['mail']);
+				if ($member['t_shirt'] == -1) {
+					$member['t_shirt'] = 'None';
+				}
+			}
+		}
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edite Profile',
+			'description' => $result,
+			'url' => $keySearch,
+			'data'=> $result
+		));
+	}
 }

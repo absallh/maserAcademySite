@@ -36,7 +36,9 @@ class Member extends person
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){
         $email = filter_var($email, FILTER_SANITIZE_STRING);
         $firstName = filter_var($firstName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $firstName = ucwords($firstName);
         $lastName = filter_var($lastName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $lastName = ucwords($lastName);
         $password = filter_var($password, FILTER_SANITIZE_STRING);
         $phone = filter_var($phone, FILTER_SANITIZE_STRING);
         $birthday = date("Y-m-d", strtotime($birthday));
