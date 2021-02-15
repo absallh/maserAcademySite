@@ -75,27 +75,6 @@ class admin extends person
       exit;
     }
 
-    public function showAllMember()
-    {
-        $db = new database();
-        $result = $db->allMembers();
-        if ($result == -1) {
-          echo "<center>There is no trainee yet!</center>";
-        }else {
-          foreach ($result as $member) {
-            $memberEmail = $member['mail'];
-            $memberName = $member['firstName'].' '.$member['lastName'];
-            $memberAge = $member['age'];
-            $t_shirt = $member['number'];
-            $payed = ($member['payed'] == 1);
-            if ($t_shirt == null) {
-              $t_shirt = 'None';
-            }
-            include "../gui/MemberCard.php";
-          }
-        }
-    }
-
     public function searchOnMembers($key){
         $db = new database();
         $result;

@@ -63,6 +63,6 @@
   ?>
 </main>
 <?php
-  require "../gui/profile.js.php";
-  include "../gui/footer.html";
+  
+  include "../gui/footer.php";
 ?>

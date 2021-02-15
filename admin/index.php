@@ -39,11 +39,10 @@
     $model->showTopPosts();
    ?>
    <div class="leftHomeContainer">
-     <a href="./allTrainee"><i class="fas fa-users"></i>&nbsp;All trainee </a>
+     <div onclick="goToAllTrainee();"><i class="fas fa-users"></i>&nbsp;All trainee </div>
    </div>
-   <script src="../gui/closeFullScreen.js" charset="utf-8"></script>
-   <script src="../gui/showPost.js" charset="utf-8"></script>
+
 </main>
 <?php
-  include "../gui/footer.html";
+  include "../gui/footer.php";
 ?>

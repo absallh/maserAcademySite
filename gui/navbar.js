@@ -60,3 +60,18 @@ hamburger.addEventListener("click", () =>{
   //burger animation
   hamburger.classList.toggle('toggol');
 });
+//click on humburger to close it
+function closeHamburger() {
+  nav.classList.remove("open");
+  navLinks.forEach(link => {
+    link.classList.remove("fade");
+  });
+  hamburger.classList.remove('toggol');
+  navLinks.forEach((link, index) =>{
+    if (link.style.animation){
+      link.style.animation = '';
+    }else {
+      link.style.transition = `all 0.5s ease ${index/5+.5}s`;
+    }
+  });
+}

@@ -1,3 +1,15 @@
+<script src="../gui/closeFullScreen.js" charset="utf-8"></script>
+<script src="../gui/showPost.js" charset="utf-8"></script>
+<script src="../gui/navbar.js" charset="utf-8"></script>
+<?php
+include '../urlHandeler.js.php';
+if ($_SESSION['permission'] == 1) {
+  ?>
+  <script src="../gui/AllMember.js" charset="utf-8"></script>
+  <script src="../gui/publishPost.js" charset="utf-8"></script>
+  <?php
+} ?>
+
     <footer>
       <div class="footer-main-div">
         <div class="footer-social-icons">
@@ -10,7 +22,7 @@
         <div class="footer-menu-one">
           <ul>
             <li><a href="./">home</a></li>
-            <li id="contactLink"><a>Contact</a></li>
+            <li id="contactLink"><a onclick="goToContactus();">Contact</a></li>
             <li><a href="../logout.php">logout</a></li>
           </ul>
         </div>

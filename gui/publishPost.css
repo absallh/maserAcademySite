@@ -27,18 +27,6 @@
   color: #333;
   font-size: 16px;
 }
-.closeBtn {
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  color: #df0a0a;
-  padding: 5px 15px;
-  border-radius: 100%;
-}
-.closeBtn:hover {
-  color: #ff3333;
-  background: #f0f0f0;
-}
 .publishPostMiddel {
   width: 100%;
   text-align: center;
@@ -150,11 +138,12 @@
   top: 13vh;
   left: 2vw;
 }
-.leftHomeContainer a {
+.leftHomeContainer div {
   text-decoration: none;
+  cursor: pointer;
   color: #777;
 }
-.leftHomeContainer a:hover {
+.leftHomeContainer div:hover {
   color: #333;
 }
 .allTraineeLink {

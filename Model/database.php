@@ -210,7 +210,8 @@
                 payed.payedDate >= date_add(CURDATE(),interval -DAY(CURDATE())+1 DAY))
                 AS payed, (SELECT theNumber FROM playernumber WHERE playernumber.player = person.mail)
                 AS number FROM person LEFT JOIN playernumber ON person.mail = playernumber.player
-                WHERE permission = 2 AND (age = $key OR phone LIKE '%$key%' OR playernumber.theNumber = $key);";
+                WHERE permission = 2 AND (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0 = $key
+                OR phone LIKE '%$key%' OR playernumber.theNumber = $key);";
       }
       else {
         $sql = "SELECT mail, firstName, lastName, DATE_FORMAT(FROM_DAYS(DATEDIFF(now(), age)), '%Y')+0
