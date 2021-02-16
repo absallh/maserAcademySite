@@ -221,6 +221,7 @@ main {
     height: 3px;
     background: white;
     margin: 5px;
+    border-radius: 39px;
   }
   .nav-links {
     position: fixed;

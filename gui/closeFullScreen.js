@@ -11,6 +11,8 @@ document.onkeydown = function(evt) {
       $('.fullScreen').removeClass('exitPostMenu');
     }else if (editPost) {
       closeEditPost();
+    }else if (editProfileMenu) {
+      closeEditProfileMenu();
     }
   }
 };
@@ -28,5 +30,8 @@ $('.fullScreen').click((e)=>{
   }
   else if ((editPost) && e.target.classList.contains('fullScreen')) {
     closeEditPost();
+  }
+  else if ((editProfileMenu) && e.target.classList.contains('fullScreen')) {
+    closeEditProfileMenu();
   }
 });

@@ -38,6 +38,7 @@
        $(document).attr("title", data.title);
        $(document).find('meta[name=description]').attr('content', data.description);
        window.scrollTo({top: 0, behavior: 'smooth'});
+       loadEditProfileData();
      });
      closeHamburger();
    }

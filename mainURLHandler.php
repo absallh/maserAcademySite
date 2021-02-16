@@ -13,6 +13,30 @@ if(isset($_GET['call_type']))
 			'data'=>file_get_contents('../gui/editeProfile.php')
 		));
 	}
+	elseif ($call_type == "getUserData") {
+		include '../Model/person.php';
+		$model = new person();
+		$result = $model->getPersonData();
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edit Profile',
+			'description' => 'Edit user profile',
+			'url' => $call_type,
+			'data'=>$result
+		));
+	}
+	elseif ($call_type == "getMemberPayHistory") {
+		include '../Model/Member.php';
+		$model = new Member();
+		$result = $model->getPayHistory();
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edit Profile',
+			'description' => 'Edit user profile',
+			'url' => $call_type,
+			'data'=>$result
+		));
+	}
 	elseif ($call_type == "contact") {
 		echo json_encode(array(
 			'status'=>'success',

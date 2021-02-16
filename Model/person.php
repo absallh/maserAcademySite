@@ -58,6 +58,12 @@ class person
         }
     }
 
+    public function getPersonData()
+    {
+      $db = New database();
+      return $db->getPersonData($_SESSION["email"]);
+    }
+
     public function validatePassword($email, $password)
     {
       $password = filter_var($password, FILTER_SANITIZE_STRING);

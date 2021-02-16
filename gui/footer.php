@@ -1,6 +1,7 @@
+<script src="../gui/navbar.js" charset="utf-8"></script>
 <script src="../gui/closeFullScreen.js" charset="utf-8"></script>
 <script src="../gui/showPost.js" charset="utf-8"></script>
-<script src="../gui/navbar.js" charset="utf-8"></script>
+<script src="../gui/editProfile.js" charset="utf-8"></script>
 <?php
 include '../urlHandeler.js.php';
 if ($_SESSION['permission'] == 1) {

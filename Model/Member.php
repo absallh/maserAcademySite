@@ -33,6 +33,12 @@ class Member extends person
       return $db->getTshirtNumber($_SESSION['email']);
     }
 
+    public function getPayHistory()
+    {
+      $db = New database();
+      return $db->getPayHistory($_SESSION['email']);
+    }
+
     public function signup ($email, $firstName, $lastName, $password, $birthday, $phone){
         $email = filter_var($email, FILTER_SANITIZE_STRING);
         $firstName = filter_var($firstName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);

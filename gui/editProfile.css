@@ -1,8 +1,9 @@
 .editProfileContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 .reightEditProfile {
   background: white;
@@ -10,7 +11,8 @@
   margin: 0;
   box-shadow: -2px 5px 5px -2px rgba(0, 0, 0, 0.2);
   width: 25vw;
-  height: 90vh;
+  height: 100%;
+  min-height: 400px;
   overflow: hidden;
 }
 .top-reightEditProfile {
@@ -58,24 +60,227 @@
   font-weight: 600;
 }
 .mainEditProfile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70vw;
   margin: auto;
 }
-.mainEditProfile div {
-  display: none;
-  background: white;
-  width: 100%;
+.mainEditProfile-section {
+  width: 70vw;
   height: auto;
-  border: 1px solid #f0f0f0;
+  min-height: 400px;
+  padding: 15px;
   border-radius: 39px;
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+  background: white;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  display: none;
 }
-.mainEditProfile div.active {
+.mainEditProfile-section.active {
   display: block;
 }
-.mainEditProfile div.active * {
-  display: block;
+.top-mainEditProfile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 8vh;
+}
+.top-mainEditProfile h4 {
+  color: #A9A9A9;
+  font-size: 18px;
+  font-weight: normal;
+}
+.editProfileBurger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.editProfileBurger:hover {
+  background: #f0f0f0;
+}
+.editProfileBurger div {
+  width: 20px;
+  height: 2px;
+  background: #A9A9A9;
+  margin: 5px;
+  border-radius: 39px;
+}
+/*edit this display to viwe the image at the bottom*/
+.midel-mainEditProfile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reight-midel-mainEditProfile {
+  width: 30%;
+  text-align: center;
+}
+.reight-midel-mainEditProfile img {
+  width: 100%;
+}
+.reight-midel-mainEditProfile p {
+  color: #777;
+  font-size: 15px;
+}
+.left-midel-mainEditProfile {
+  width: 65%;
+  height: auto;
+  position: relative;
+  padding: auto 0;
+}
+.twoInputContainer-mainEditProfile {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-auto-rows: auto;
+  gap: 0px;
+}
+.twoInputContainer-mainEditProfile * {
+  box-sizing: border-box;
+}
+.inputContainer-mainEditProfile {
+  border-radius: 5px;
+  border: 1px solid #A9A9A9;
+  padding: 0;
+  margin: 10px;
+}
+.inputContainer-mainEditProfile span {
+  font-size: 12px;
+  color: #A9A9A9;
+  padding: 0 5px;
+}
+.input-mainEditProfile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px 10px 10px;
+}
+.input-mainEditProfile i {
+  color: #A9A9A9;
+  margin-right: 5px;
+}
+.input-mainEditProfile input {
+  height: 100%;
+  width: 90%;
+  line-height: 20px;
+  font-size: 17px;
+  outline: none;
+  border: none;
+  padding: 5px;
+  color: #777;
+}
+.input-mainEditProfile input:focus {
+  color: #333;
+}
+.input-mainEditProfile.focus i {
+  color: #5995fd;
+}
+.btn-mainEditProfile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.btn-mainEditProfile input {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn-mainEditProfile input:hover {
+  background-color: #4d84e2;
+}
+
+.tableContainer-editProfile {
+  height: 200px;
+  margin: 20px 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.table-editProfile {
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9em;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.table-editProfile thead tr {
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+.table-editProfile th,
+.table-editProfile td {
+  padding: 12px 15px;
+}
+.table-editProfile th {
+  background-color: #5995fd;
+  position: sticky;
+  top: 0;
+}
+.table-editProfile th::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: black;
+}
+.table-editProfile tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.table-editProfile tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.table-editProfile tbody tr:last-of-type {
+  border-bottom: 2px solid #5995fd;
+}
+
+@media (max-width: 900px) {
+  .midel-mainEditProfile {
+    display: block;
+  }
+  .left-midel-mainEditProfile {
+    width: 100%;
+  }
+  .reight-midel-mainEditProfile {
+    width: 100%;
+  }
+  .reight-midel-mainEditProfile img {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .reightEditProfile{
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50vw;
+    z-index: 9;
+    transition: all .5s ease-out;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+  .reightEditProfile.open {
+    left: 0;
+  }
+  .mainEditProfile-section {
+    width: 90%;
+    margin: auto;
+  }
+  .editProfileBurger {
+    display: block;
+  }
+  .twoInputContainer-mainEditProfile {
+    display: block;
+  }
 }

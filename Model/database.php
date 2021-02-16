@@ -107,8 +107,16 @@
     }
 
     public function getPersonData ($email){
-      $sql = "SELECT * FROM person WHERE mail = '$email';";
+      $sql = "SELECT mail, firstName, lastName, age, phone, lastActive, permission,
+              (SELECT theNumber FROM playernumber WHERE playernumber.player = person.mail)
+              AS theNumber FROM person WHERE mail = '$email';";
       return $this->makeOneRowQuery($sql);
+    }
+
+    public function getPayHistory($email)
+    {
+      $sql = "SELECT payedDate FROM payed WHERE person = '$email' ORDER BY payedDate DESC;";
+      return $this->makeMultiRowQuery($sql);
     }
 
     public function getTopPostComments($post_id)
