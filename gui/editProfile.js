@@ -79,6 +79,7 @@ function updateINFO() {
       phoneNumber: $('input[name="phoneNumber"]').val()}, function(data, textStatus, xhr) {
         //start the function
         $('#NavprofileSpan').html($('input[name="firstName"]').val());
+        loadEditProfileData();
         alert('Updated successfully😃');
         //end the function
     });

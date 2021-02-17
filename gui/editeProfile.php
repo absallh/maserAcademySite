@@ -136,7 +136,7 @@
           </div>
           <div class="reight-midel-mainEditProfile">
             <img src="../image/undraw_Security_on_ff2u.svg">
-            <p>The password is your responsibility.<br>Don't give it to anyone.</p>
+            <p>Don't give the password to anyone.</p>
           </div>
         </div>
       </div>

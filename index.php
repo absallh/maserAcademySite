@@ -14,72 +14,76 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="image/icons8-stadium-80.png" type="image/icon type">
-    <title>welcom to maser academy</title>
+    <title>Sign in & Sign up Form</title>
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="./" method="post" class="sign-in-form" name="sign-in-form">
+          <form method="post" action="./" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name="userName" required/>
+              <input type="text" name="userName" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="pass" required/>
+              <input type="password" name="pass" placeholder="Password" />
             </div>
-            <input type="submit" value="login" class="btn solid" name="login"/>
+            <input type="submit" value="login" name="login" class="btn solid" />
           </form>
-          <form action="./" method="post" class="sign-up-form">
-            <div class="singu_part" id="first_signup">
+          <form method="post" action="./" class="sign-up-form">
+            <div class="firstSingup">
               <h2 class="title">Sign up</h2>
               <div class="input-field">
-                <i class="fas fa-at"></i>
-                <input type="email" placeholder="Email" name="email" maxlength="100" id="email" required/>
-              </div>
-              <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="First Name" name="fname" maxlength="20" id="fname" required/>
+                <input type="text" name="fname" placeholder="First Name" maxlength="20" required/>
               </div>
               <div class="input-field">
                 <i class="fas fa-signature"></i>
-                <input type="text" placeholder="Last Name" name="lname" maxlength="20" id="lname" required/>
+                <input type="text" name="lname" placeholder="Last Name" maxlength="20" required/>
+              </div>
+              <div class="input-field">
+                <i class="fas fa-at"></i>
+                <input type="email" name="email" placeholder="Email" maxlength="100" required/>
               </div>
               <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" id="password" name="pass" maxlength="28" minlength="8" required/>
+                <input type="password" name="password" placeholder="Password" minlength="8" maxlength="28" required/>
               </div>
-              <div class="input-field" style="display:none;" id="repassword">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Confirm Password" onkeyup="validatePassword()" id="confirm_password" required/>
+              <div class="input-field" id="confirm_pass" style="display:none;">
+                <i class="fas fa-key"></i>
+                <input type="password" name="confirm_pass" placeholder="Confirm Password" required/>
               </div>
-              <div class="signup_btns">
-                <input type="button" class="btn" value="next" onclick="validatePassword()" id="next_btn"/>
-              </div>
+              <input type="button" class="btn" name="next" value="Next" />
             </div>
-            <div class="singu_part" style="display:none;" id="second_signup">
+            <div class="secondSignup">
+              <h2 class="title">More Info</h2>
               <div class="input-field">
                 <i class="fas fa-birthday-cake"></i>
-                <input type="text" placeholder="Birthday" onfocus="(this.type='date')" onblur="showBirthDayText()" name="birthday" id="birthday" required/>
+                <script>
+                  function birthdayBlur() {
+                    if (!$('input[name="birthday"]').val()) {
+                      document.querySelector('input[name="birthday"]').type = 'text';
+                    }
+                  }
+                </script>
+                <input type="text"  onfocus="this.type='date';" onblur="birthdayBlur();" name="birthday" placeholder="Birthday" required/>
               </div>
               <div class="input-field">
                 <i class="fas fa-phone-alt"></i>
-                <input type="tel" placeholder="Phone Number" maxlength="11" minlength='11' name="phone" required/>
+                <input type="tel" name="phone" placeholder="Phone Number" minlength='11' maxlength="11" required/>
               </div>
-              <div class="signup_btns">
-                <input type="button" class="btn" value="previous" id="prev_btn"/>
-                <input type="submit" class="btn" value="Sign up" name="signup"/>
+              <div class="twoBTN">
+                <input type="button" class="btn" name="prevous" value="Prevous" />
+                <input type="submit" class="btn" name="singup" value="sing up" />
               </div>
             </div>
           </form>
+        </div>
       </div>
-    </div>
-
 
       <div class="panels-container">
         <div class="panel left-panel">
@@ -112,14 +116,6 @@
     </div>
 
     <script src="app.js"></script>
-    <script>
-    //birthday const difend in app.js
-    function showBirthDayText(){
-      if (!birthday.value){//if the birthday field is empty
-        birthday.type = 'text';
-      }
-    }
-    </script>
   </body>
 </html>
 <?php
@@ -128,7 +124,7 @@
     $person = New person();
     $person->login($_POST["userName"], $_POST["pass"]);
   }
-  if (isset($_POST["fname"])){
+  if (isset($_POST["singup"])){
     $member = New Member();
     $member->signup($_POST["email"], $_POST["fname"], $_POST["lname"], $_POST["pass"], $_POST['birthday'], $_POST['phone']);
   }
