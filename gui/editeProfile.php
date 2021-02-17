@@ -23,160 +23,162 @@
     </div>
   </div>
   <div class="mainEditProfile">
-    <div id="EditGeneralInfo" class="mainEditProfile-section active">
-      <div class="top-mainEditProfile">
-         <div class="editProfileBurger" onclick="openEditProfileMenu();">
-          <div></div>
-          <div></div>
-          <div></div>
+    <form method="post">
+      <div id="EditGeneralInfo" class="mainEditProfile-section active">
+        <div class="top-mainEditProfile">
+          <div class="editProfileBurger" onclick="openEditProfileMenu();">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h4>General Info</h4>
         </div>
-        <h4>General Info</h4>
-      </div>
-      <div class="midel-mainEditProfile">
-        <div class="left-midel-mainEditProfile">
-          <div class="twoInputContainer-mainEditProfile">
-            <div class="inputContainer-mainEditProfile">
-              <span>First Name</span>
-              <div class="input-mainEditProfile">
-                <i class="fas fa-user"></i>
-                <input type="text" name="firstName" value="" required>
+        <div class="midel-mainEditProfile">
+          <div class="left-midel-mainEditProfile">
+            <div class="twoInputContainer-mainEditProfile">
+              <div class="inputContainer-mainEditProfile">
+                <span>First Name</span>
+                <div class="input-mainEditProfile">
+                  <i class="fas fa-user"></i>
+                  <input type="text" name="firstName" value="" required>
+                </div>
+              </div>
+              <div class="inputContainer-mainEditProfile">
+                <span>Last Name</span>
+                <div class="input-mainEditProfile">
+                  <i class="fas fa-signature"></i>
+                  <input type="text" name="lastName" value="" required>
+                </div>
               </div>
             </div>
             <div class="inputContainer-mainEditProfile">
-              <span>Last Name</span>
+              <span>Birthday</span>
               <div class="input-mainEditProfile">
-                <i class="fas fa-signature"></i>
-                <input type="text" name="lastName" value="" required>
+                <i class="fas fa-birthday-cake"></i>
+                <input type="date" name="birthday" value="" required/>
               </div>
             </div>
-          </div>
-          <div class="inputContainer-mainEditProfile">
-            <span>Birthday</span>
-            <div class="input-mainEditProfile">
-              <i class="fas fa-birthday-cake"></i>
-              <input type="date" name="birthday" value="" required/>
+            <div class="btn-mainEditProfile">
+              <input type="button" class="btn" value="Update Info" onclick="updateINFO();" name="updateGenralInfo"/>
             </div>
           </div>
-          <div class="btn-mainEditProfile">
-            <input type="button" class="btn" value="Update Info" name="updateGenralInfo"/>
+          <div class="reight-midel-mainEditProfile">
+            <img src="../image/undraw_profile_details_f8b7.svg">
+            <p id="t-shirtNumberP">your T-shirt number is 10</p>
           </div>
         </div>
-        <div class="reight-midel-mainEditProfile">
-          <img src="../image/undraw_profile_details_f8b7.svg">
-          <p id="t-shirtNumberP">your T-shirt number is 10</p>
-        </div>
       </div>
-    </div>
-    <div id="EditContactInfo" class="mainEditProfile-section">
-      <div class="top-mainEditProfile">
-         <div class="editProfileBurger" onclick="openEditProfileMenu();">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <h4>Contact Info</h4>
-      </div>
-      <div class="midel-mainEditProfile">
-        <div class="left-midel-mainEditProfile">
-          <div class="inputContainer-mainEditProfile">
-            <span>Phone Number</span>
-            <div class="input-mainEditProfile">
-              <i class="fas fa-phone-alt"></i>
-              <input type="tel" name="phoneNumber" value="" maxlength="11" minlength="11" required>
-            </div>
+      <div id="EditContactInfo" class="mainEditProfile-section">
+        <div class="top-mainEditProfile">
+          <div class="editProfileBurger" onclick="openEditProfileMenu();">
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-          <div class="btn-mainEditProfile">
-            <input type="button" class="btn" value="Update Info" name="updateGenralInfo"/>
-          </div>
+          <h4>Contact Info</h4>
         </div>
-        <div class="reight-midel-mainEditProfile">
-          <img src="../image/undraw_Chatting_re_j55r.svg">
-          <p>Make sure that your phone number is corect.<br>We hope that you enter a whatsapp number.</p>
-        </div>
-      </div>
-    </div>
-    <div id="EditSecurity" class="mainEditProfile-section">
-      <div class="top-mainEditProfile">
-         <div class="editProfileBurger" onclick="openEditProfileMenu();">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <h4>Security Info</h4>
-      </div>
-      <div class="midel-mainEditProfile">
-        <div class="left-midel-mainEditProfile">
-          <div class="inputContainer-mainEditProfile">
-            <span>Old Password</span>
-            <div class="input-mainEditProfile">
-              <i class="fas fa-lock-open"></i>
-              <input type="password" name="oldPass" required>
-            </div>
-          </div>
-          <div class="twoInputContainer-mainEditProfile">
+        <div class="midel-mainEditProfile">
+          <div class="left-midel-mainEditProfile">
             <div class="inputContainer-mainEditProfile">
-              <span>New Password</span>
+              <span>Phone Number</span>
               <div class="input-mainEditProfile">
-                <i class="fas fa-lock"></i>
-                <input type="password" name="newPass" maxlength="28" minlength="8" required>
+                <i class="fas fa-phone-alt"></i>
+                <input type="tel" name="phoneNumber" value="" maxlength="11" minlength="11" required>
               </div>
             </div>
+            <div class="btn-mainEditProfile">
+              <input type="button" class="btn" value="Update Info" onclick="updateINFO();" name="updateGenralInfo"/>
+            </div>
+          </div>
+          <div class="reight-midel-mainEditProfile">
+            <img src="../image/undraw_Chatting_re_j55r.svg">
+            <p>Make sure that your phone number is corect.<br>We hope that you enter a whatsapp number.</p>
+          </div>
+        </div>
+      </div>
+      <div id="EditSecurity" class="mainEditProfile-section">
+        <div class="top-mainEditProfile">
+          <div class="editProfileBurger" onclick="openEditProfileMenu();">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h4>Security Info</h4>
+        </div>
+        <div class="midel-mainEditProfile">
+          <div class="left-midel-mainEditProfile">
             <div class="inputContainer-mainEditProfile">
-              <span>Confirm Password</span>
+              <span>Old Password</span>
               <div class="input-mainEditProfile">
-                <i class="fas fa-user-lock"></i>
-                <input type="password" name="confirmPass" required>
+                <i class="fas fa-lock-open"></i>
+                <input type="password" name="oldPass" autocomplete="off" required>
               </div>
             </div>
+            <div class="twoInputContainer-mainEditProfile">
+              <div class="inputContainer-mainEditProfile">
+                <span>New Password</span>
+                <div class="input-mainEditProfile">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" name="newPass" autocomplete="off" maxlength="28" minlength="8" onkeyup="validatePassword();" required>
+                </div>
+              </div>
+              <div class="inputContainer-mainEditProfile">
+                <span>Confirm Password</span>
+                <div class="input-mainEditProfile">
+                  <i class="fas fa-user-lock"></i>
+                  <input type="password" name="confirmPass" autocomplete="off" onkeyup="validatePassword();" required>
+                </div>
+              </div>
+            </div>
+            <div class="btn-mainEditProfile">
+              <input type="submit" class="btn" value="Update Info" onclick="updateINFO();" name="updateGenralInfo"/>
+            </div>
           </div>
-          <div class="btn-mainEditProfile">
-            <input type="button" class="btn" value="Update Info" name="updateGenralInfo"/>
-          </div>
-        </div>
-        <div class="reight-midel-mainEditProfile">
-          <img src="../image/undraw_Security_on_ff2u.svg">
-          <p>The password is your responsibility.<br>Don't give it to anyone.</p>
-        </div>
-      </div>
-    </div>
-    <div id="EditPayHistory" class="mainEditProfile-section">
-      <div class="top-mainEditProfile">
-         <div class="editProfileBurger" onclick="openEditProfileMenu();">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <h4>Pay History</h4>
-      </div>
-      <div class="midel-mainEditProfile">
-        <div class="left-midel-mainEditProfile">
-          <div class="tableContainer-editProfile">
-            <table class="table-editProfile">
-            <thead>
-              <tr>
-                <th>Month number</th>
-                <th>Date of paying</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+          <div class="reight-midel-mainEditProfile">
+            <img src="../image/undraw_Security_on_ff2u.svg">
+            <p>The password is your responsibility.<br>Don't give it to anyone.</p>
           </div>
         </div>
-        <div class="reight-midel-mainEditProfile">
-          <img src="../image/undraw_wallet_aym5.svg">
-          <p>All the avilable pay history appear here.</p>
+      </div>
+      <div id="EditPayHistory" class="mainEditProfile-section">
+        <div class="top-mainEditProfile">
+          <div class="editProfileBurger" onclick="openEditProfileMenu();">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <h4>Pay History</h4>
+        </div>
+        <div class="midel-mainEditProfile">
+          <div class="left-midel-mainEditProfile">
+            <div class="tableContainer-editProfile">
+              <table class="table-editProfile">
+                <thead>
+                  <tr>
+                    <th>Month number</th>
+                    <th>Date of paying</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="reight-midel-mainEditProfile">
+            <img src="../image/undraw_wallet_aym5.svg">
+            <p>All the avilable pay history appear here.</p>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 <script type="text/javascript">
   $('main').css("margin-top","10vh");
   $('.input-mainEditProfile input').focus(function() {
-    $( this ).parent('.input-mainEditProfile').addClass('focus');
+    $(this).parent('.input-mainEditProfile').addClass('focus');
   });
   $('.input-mainEditProfile input').blur(function() {
-    $( this ).parent('.input-mainEditProfile').removeClass('focus');
+    $(this).parent('.input-mainEditProfile').removeClass('focus');
   });
 </script>

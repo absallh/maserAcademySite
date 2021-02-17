@@ -160,8 +160,14 @@
     }
 
     public function updateInfo ($email, $password, $firstName, $lastName, $age, $phone){
-      $sql = "UPDATE person SET firstName='$firstName', lastName='$lastName',
-          age= '$age', phone='$phone', person_password='$password' WHERE mail = '$email';";
+      $sql = '';
+      if ($password == '') {
+        $sql = "UPDATE person SET firstName='$firstName', lastName='$lastName',
+                age= '$age', phone='$phone' WHERE mail = '$email';";
+      }else {
+        $sql = "UPDATE person SET firstName='$firstName', lastName='$lastName',
+                age= '$age', phone='$phone', person_password='$password' WHERE mail = '$email';";
+      }
       return $this->insertData($sql);
     }
 

@@ -107,7 +107,9 @@ class person
     {
         $password = filter_var($password, FILTER_SANITIZE_STRING);
         $firstName = filter_var($firstName, FILTER_SANITIZE_STRING);
+        $firstName = ucwords($firstName);
         $lastName = filter_var($lastName, FILTER_SANITIZE_STRING);
+        $lastName = ucwords($lastName);
         $phone = filter_var($phone, FILTER_SANITIZE_STRING);
 
         $db = New database();

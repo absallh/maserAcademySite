@@ -13,10 +13,35 @@ if(isset($_GET['call_type']))
 			'data'=>file_get_contents('../gui/editeProfile.php')
 		));
 	}
+	elseif ($call_type == "updateINFO") {
+		include '../Model/person.php';
+		$model = new person();
+		$result = $model->updateInfo($_GET['password'], $_GET['firstName'], $_GET['lastName'],
+		 														$_GET['birthday'], $_GET['phoneNumber']);
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edit Profile',
+			'description' => 'Edit user profile',
+			'url' => $call_type,
+			'data'=> $result
+		));
+	}
 	elseif ($call_type == "getUserData") {
 		include '../Model/person.php';
 		$model = new person();
 		$result = $model->getPersonData();
+		echo json_encode(array(
+			'status'=>'success',
+			'title'=>'Edit Profile',
+			'description' => 'Edit user profile',
+			'url' => $call_type,
+			'data'=>$result
+		));
+	}
+	elseif ($call_type == "validateOldPassword") {
+		include '../Model/person.php';
+		$model = new person();
+		$result = $model->validatePassword($_GET['email'], $_GET['password']);
 		echo json_encode(array(
 			'status'=>'success',
 			'title'=>'Edit Profile',
