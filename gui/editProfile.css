@@ -201,7 +201,7 @@
 .tableContainer-editProfile {
   height: 200px;
   margin: 20px 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .table-editProfile {
@@ -274,7 +274,7 @@
     left: 0;
   }
   .mainEditProfile-section {
-    width: 90%;
+    width: 100%;
     margin: auto;
   }
   .editProfileBurger {

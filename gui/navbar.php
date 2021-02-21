@@ -12,6 +12,7 @@
         ?>
         <link rel="stylesheet" href="../gui/publishPost.css" />
         <link rel="stylesheet" href="../gui/AllMember.css" />
+        <link rel="stylesheet" href="../gui/editTrainee.css" />
         <?php
       }
    ?>

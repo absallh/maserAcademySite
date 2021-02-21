@@ -171,6 +171,33 @@
       return $this->insertData($sql);
     }
 
+    public function AdminUpdateMemberInfo($oldEmail, $newEmail, $password, $fname, $lastname, $age, $phone, $t_shirt, $oldT_shirt)
+    {
+      $mysqli = $this->connect_to_DB();
+      $result = $mysqli->query("SET FOREIGN_KEY_CHECKS = 0;");
+      $sql = '';
+      if ($password == '') {
+        $sql = "UPDATE payed LEFT JOIN (person LEFT JOIN playernumber ON
+                person.mail = playernumber.player) ON person.mail = payed.person
+                SET person.mail = '$newEmail', payed.person = '$newEmail',
+                playernumber.player = '$newEmail', person.firstName = '$fname' ,
+                person.lastName = '$lastname', person.age = '$age', person.phone='$phone',
+                playernumber.theNumber = $t_shirt WHERE
+                payed.person = '$oldEmail';";
+      }else {
+        $sql = "UPDATE payed LEFT JOIN (person LEFT JOIN playernumber ON
+                person.mail = playernumber.player) ON person.mail = payed.person
+                SET person.mail = '$newEmail', payed.person = '$newEmail',
+                playernumber.player = '$newEmail', person.firstName = '$fname' ,
+                person.lastName = '$lastname', person.age = '$age', person.phone='$phone',
+                person.person_password = '$password', playernumber.theNumber = $t_shirt WHERE
+                payed.person = '$oldEmail';";
+      }
+      $result2 = $mysqli->query($sql);
+      $mysqli->close();
+      return ($result2 && $result);
+    }
+
     public function selectMemberPayed($email)
     {
       $sql = "INSERT INTO payed(person, payedDate) VALUES ('$email', CURRENT_TIMESTAMP());";

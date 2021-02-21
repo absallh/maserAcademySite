@@ -77,10 +77,8 @@
 
    window.onpopstate = function () {
      var pageName = window.location.pathname.split("/").pop();
-     if (pageName == '') {
-       location.reload();
-     }
-     else if (pageName == 'profile') {
+
+     if (pageName == 'profile') {
        loadEditProfile();
      }
      else if (pageName == 'contact') {
@@ -91,5 +89,8 @@
           loadAllTrainee();
        }
      <?php } ?>
+     else {
+       location.reload();
+     }
    }
 </script>

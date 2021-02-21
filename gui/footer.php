@@ -24,7 +24,11 @@ if ($_SESSION['permission'] == 1) {
           <ul>
             <li><a href="./">home</a></li>
             <li id="contactLink"><a onclick="goToContactus();">Contact</a></li>
-            <li><a href="../logout.php">logout</a></li>
+            <?php if ($_SESSION['permission'] == 1) {
+              ?><li><a onclick="goToAllTrainee();">All trainee</a></li><?php
+            }else {
+              ?><li><a href="../logout.php">logout</a></li><?php
+            } ?>
           </ul>
         </div>
       </div>

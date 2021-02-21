@@ -88,11 +88,6 @@ class admin extends person
         return $result;
     }
 
-    private function updateMemberInfo($email, $password, $fname, $lastname, $age, $phone)
-    {
-        return ;
-    }
-
     public function selectMemberPayed($email)
     {
         $db = new database();
@@ -103,6 +98,24 @@ class admin extends person
     {
         $db = new database();
         return $db->deletePayed($email);
+    }
+
+    public function getMemberData($email)
+    {
+        $db = new database();
+        return $db->getPersonData($email);
+    }
+
+    public function getMemberPayHistory($email)
+    {
+        $db = new database();
+        return $db->getPayHistory($email);
+    }
+
+    public function updateMemberInfo($oldEmail, $newEmail, $password, $fname, $lastname, $age, $phone, $t_shirt, $oldT_shirt)
+    {
+        $db = new database();
+        return $db->AdminUpdateMemberInfo($oldEmail, $newEmail, $password, $fname, $lastname, $age, $phone, $t_shirt, $oldT_shirt);
     }
 
     private function deleteMember($memberEmail)

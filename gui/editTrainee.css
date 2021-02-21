@@ -1,0 +1,237 @@
+.editTrainee-containter {
+  height: auto;
+  min-height: 92vh;
+  width: 100vw;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.editTrainee-left-container, .editTrainee-reight-container {
+  width: 49%;
+  min-height: 88vh;
+  height: auto;
+  background: white;
+  border-radius: 39px;
+}
+.editTrainee-reight-container {
+  max-width: 444px;
+}
+.editTrainee-left-container h4, .editTrainee-reight-container h4 {
+  color: #555;
+  padding: 15px;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+}
+.input-container-editTrainee {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+.input-editTrainee {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px;
+}
+.input-editTrainee input {
+  background: none;
+  color: #777;
+  font-size: 20px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+  outline: none;
+}
+.input-editTrainee input:focus {
+  color: #333;
+}
+.input-editTrainee input:focus ~ label, .input-editTrainee input:valid ~ label {
+  top: -4px;
+  font-size: 14px;
+  color: #2196F3;
+}
+.input-editTrainee input:focus ~ .input-bar-editTrainee:before {
+  width: 100%;
+}
+.input-editTrainee.blur input:invalid:not(:focus) ~ label {
+  top: -4px;
+  font-size: 14px;
+  color: red;
+}
+.input-editTrainee input[type=password] {
+  letter-spacing: 0.3em;
+}
+.input-editTrainee label {
+  color: #c6c6c6;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 20px;
+  transition: 0.5s ease all;
+}
+.input-bar-editTrainee {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.input-bar-editTrainee:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: linear-gradient(to right, #2196F3, #05efff);
+  transition: 0.5s ease all;
+  left: 0%;
+}
+.btn-editTrainee, .btn-editPayDate-editTrainee {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 20px;
+}
+.btn-editPayDate-editTrainee {
+  padding: 0;
+}
+.btn-editTrainee input, .btn-editPayDate-editTrainee input {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btn-editPayDate-editTrainee input {
+  width: 100%;
+  min-width: 50px;
+  height: 39px;
+  margin: 0;
+}
+.btn-editTrainee input:hover, .btn-editPayDate-editTrainee input:hover {
+  background-color: #4d84e2;
+}
+.tableContainer-editTrainee {
+  height: 67vh;
+  width: 100%;
+  min-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 5px;
+}
+.table-editTrainee {
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9em;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.table-editTrainee thead tr {
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+.table-editTrainee th,
+.table-editTrainee td {
+  padding: 12px 15px;
+}
+.table-editTrainee th {
+  background-color: #5995fd;
+  position: sticky;
+  top: 0;
+}
+.table-editTrainee th::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: black;
+}
+.table-editTrainee tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.table-editTrainee tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.table-editTrainee tbody tr:last-of-type {
+  border-bottom: 2px solid #5995fd;
+}
+.editTrainee-editPayDate {
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 39px;
+  height: auto;
+  width: 60vw;
+  min-width: 768px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: -100;
+}
+.editTrainee-editPayDate.fullScreen {
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: white;
+  pointer-events: all;
+  opacity: 1;
+}
+.editTrainee-editPayDate h4 {
+  width: 100%;
+  color: #555;
+  padding: 15px;
+  border-bottom: 1px solid #F0F0f0
+}
+
+@media screen and (max-width: 815px) {
+  .editTrainee-left-container {
+    min-width: 404px;
+  }
+  .editTrainee-reight-container {
+    width: 46%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .editTrainee-containter {
+    min-height: 0;
+    display: block;
+    padding: 0;
+  }
+  .editTrainee-left-container, .editTrainee-reight-container {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    margin: 15px 0;
+    max-width: none;
+  }
+  .input-container-editTrainee {
+    display: block;
+  }
+  .tableContainer-editTrainee {
+    height: auto;
+  }
+  .editTrainee-editPayDate {
+    width: 100vw;
+    min-width: 0;
+  }
+}

@@ -38,10 +38,6 @@
   <?php
     $model->showTopPosts();
    ?>
-   <div class="leftHomeContainer">
-     <div onclick="goToAllTrainee();"><i class="fas fa-users"></i>&nbsp;All trainee </div>
-   </div>
-
 </main>
 <?php
   include "../gui/footer.php";
