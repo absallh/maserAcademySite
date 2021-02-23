@@ -118,9 +118,28 @@ class admin extends person
         return $db->AdminUpdateMemberInfo($oldEmail, $newEmail, $password, $fname, $lastname, $age, $phone, $t_shirt, $oldT_shirt);
     }
 
-    private function deleteMember($memberEmail)
+    public function addPayingDate($email, $date)
     {
-        return;
+        $db = new database();
+        return $db->addPayingDate($email, $date);
+    }
+
+    public function deletePayingDate($email, $date)
+    {
+        $db = new database();
+        return $db->deletePayingDate($email, $date);
+    }
+
+    public function updatePayingDate($email, $newDate, $oldDate)
+    {
+        $db = new database();
+        return $db->updatePayingDate($email, $newDate, $oldDate);
+    }
+
+    public function deleteMember($memberEmail)
+    {
+        $db = new database();
+        return $db->deleteMember($memberEmail);
     }
 
     private function addMember($email, $password, $fname, $lastName, $age, $phone)
@@ -129,11 +148,6 @@ class admin extends person
     }
 
     private function deleteComment($member, $post_id, $commentTime)
-    {
-        return;
-    }
-
-    private function setPlayerNumber($player, $number)
     {
         return;
     }

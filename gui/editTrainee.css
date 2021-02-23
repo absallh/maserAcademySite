@@ -13,6 +13,7 @@
   height: auto;
   background: white;
   border-radius: 39px;
+  position: relative;
 }
 .editTrainee-reight-container {
   max-width: 444px;
@@ -200,6 +201,47 @@
   padding: 15px;
   border-bottom: 1px solid #F0F0f0
 }
+.deleteTraineeBTN {
+  background: linear-gradient(to bottom, #ff6666, #e60000);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 39px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+.deleteTraineeBTN:hover {
+  background: #e60000;
+}
+.multi-button button{
+  height: 30px;
+  width: 59px;
+  background: linear-gradient(to bottom, #05efff, #2196F3);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  margin: 0px;
+  padding: 0;
+  stroke: black;
+  outline: none;
+}
+.multi-button :nth-child(1){
+  border-radius: 20px 0 0 20px;
+}
+.multi-button :nth-child(2){
+  background: linear-gradient(to bottom, #ff6666, #e60000);
+  border-radius: 0 20px 20px 0;
+}
+.multi-button button:hover{
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.2));
+}
+.multi-button button:active{
+  filter: none;
+  transform: scale(.95);
+}
+
 
 @media screen and (max-width: 815px) {
   .editTrainee-left-container {

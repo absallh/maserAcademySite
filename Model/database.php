@@ -171,31 +171,64 @@
       return $this->insertData($sql);
     }
 
+    public function deleteMember($memberEmail)
+    {
+      $sql = "DELETE FROM comments WHERE person = '$memberEmail';";
+      $res1 = $this->insertData($sql);
+      $sql = "DELETE FROM payed WHERE person = '$memberEmail';";
+      $res2 = $this->insertData($sql);
+      $sql = "DELETE FROM playernumber WHERE player = '$memberEmail';";
+      $res3 = $this->insertData($sql);
+      $sql = "DELETE FROM personwatchedpost WHERE person = '$memberEmail';";
+      $res4 = $this->insertData($sql);
+      $sql = "DELETE FROM person WHERE mail = '$memberEmail';";
+      $res5 =  $this->insertData($sql);
+      return ($res1 && $res2 && $res3 && $res4 && $res5);
+    }
+
     public function AdminUpdateMemberInfo($oldEmail, $newEmail, $password, $fname, $lastname, $age, $phone, $t_shirt, $oldT_shirt)
     {
       $mysqli = $this->connect_to_DB();
-      $result = $mysqli->query("SET FOREIGN_KEY_CHECKS = 0;");
-      $sql = '';
-      if ($password == '') {
-        $sql = "UPDATE payed LEFT JOIN (person LEFT JOIN playernumber ON
-                person.mail = playernumber.player) ON person.mail = payed.person
-                SET person.mail = '$newEmail', payed.person = '$newEmail',
-                playernumber.player = '$newEmail', person.firstName = '$fname' ,
-                person.lastName = '$lastname', person.age = '$age', person.phone='$phone',
-                playernumber.theNumber = $t_shirt WHERE
-                payed.person = '$oldEmail';";
-      }else {
-        $sql = "UPDATE payed LEFT JOIN (person LEFT JOIN playernumber ON
-                person.mail = playernumber.player) ON person.mail = payed.person
-                SET person.mail = '$newEmail', payed.person = '$newEmail',
-                playernumber.player = '$newEmail', person.firstName = '$fname' ,
-                person.lastName = '$lastname', person.age = '$age', person.phone='$phone',
-                person.person_password = '$password', playernumber.theNumber = $t_shirt WHERE
-                payed.person = '$oldEmail';";
-      }
+      $result = $mysqli->query("SET FOREIGN_KEY_CHECKS = 0;");//to enable change mail address
+
+      $sql = "UPDATE person SET mail = '$newEmail',firstName = '$fname',
+              lastName = '$lastname',age = '$age',phone = '$phone'".
+              (($password == '') ? '' : ", person_password =  '$password'")
+              ." WHERE mail = '$oldEmail';";
       $result2 = $mysqli->query($sql);
+      $sql = "UPDATE payed SET person = '$newEmail' WHERE person = '$oldEmail';";
+      $result3 = $mysqli->query($sql);
+      $sql = "UPDATE comments SET person = '$newEmail' WHERE person = '$oldEmail';";
+      $result4 = $mysqli->query($sql);
+      if (($oldT_shirt != '') && ($t_shirt == '')) {
+        $sql = "DELETE FROM playernumber WHERE player = '$oldEmail';";
+      }elseif (($oldT_shirt == '') && ($t_shirt != '')) {
+        $sql = "INSERT INTO playernumber (player, theNumber) VALUES ('$newEmail', $t_shirt);";
+      }else {
+        $sql = "UPDATE playernumber SET player = '$newEmail', theNumber = $t_shirt WHERE player = '$oldEmail';";
+      }
+      $result5 = $mysqli->query($sql);
       $mysqli->close();
-      return ($result2 && $result);
+      return ($result && $result2);
+    }
+
+    public function addPayingDate($email, $date)
+    {
+      $sql = "INSERT INTO payed(person, payedDate) VALUES ('$email', '$date');";
+      return $this->insertData($sql);
+    }
+
+    public function updatePayingDate($email, $newDate, $oldDate)
+    {
+      $sql = "UPDATE payed SET payedDate = '$newDate' WHERE person = '$email'
+              AND payedDate = '$oldDate';";
+      return $this->insertData($sql);
+    }
+
+    public function deletePayingDate($email, $date)
+    {
+      $sql = "DELETE FROM payed WHERE person = '$email' AND payedDate = '$date';";
+      return $this->insertData($sql);
     }
 
     public function selectMemberPayed($email)
